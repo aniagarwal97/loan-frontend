@@ -1,0 +1,46 @@
+.login_container{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    align-content: center;
+    margin-top: 100px;
+    .sign_in{
+        margin: 30px;
+        font-size: 107px;
+    }
+    .input_borders{
+        text-align: left;
+        background: #e3e3e3;
+        width: 30%; 
+        padding:20px 25px 20px 25px;
+        margin: 30px;
+        border-radius: 6px;
+        margin-left:auto;
+        margin-right: 32.8%;
+        .custom_icon{
+            color:  #998f8f;
+            margin-right    : 10px;
+
+        }            
+
+    }
+    input{
+        border: none;
+        background: #e3e3e3;
+        &::-webkit-input-placeholder {
+            color:black;
+            font-size: 18px;
+            
+        }
+        
+    }
+    .sign_up{
+        color: #999999;
+        font-size: 20px;
+             }         
+}
+            
+                
+                
+            
+
+   
