@@ -8,8 +8,8 @@ export default class UserAuthentication extends Component {
         return (
             <div className='user-authentication-container'>
                 
-                <Register />
-                {/* <Login /> */}
+                {/* <Register /> */}
+                <Login />
             </div>
         )
     }

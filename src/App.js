@@ -1,6 +1,6 @@
 import React from 'react';
 import UserAuthentication from './Containers/UserAuthentication';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
