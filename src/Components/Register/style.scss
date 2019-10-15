@@ -1,7 +1,41 @@
-.sign_up{
-    margin: 30px;
-    font-size: 80px;
-    .signup_table{
-        
+.signup_container{
+
+    font-weight: 300;
+    text-align: center;
+    margin-top: 25px;
+    .sign_up{
+         
+        margin: 30px;
+        font-size: 80px;
     }
+    .input_borders{
+        text-align: left;
+        background: #e3e3e3;
+        width: 35%; 
+        margin: 15px;
+        border-radius:5px;
+        margin-left:auto;
+        margin-right:auto;       
+    }
+    input{
+        // padding-left: 10%;
+        // padding-right: 10%;
+        border-radius:5px;
+        font-size: 18px;
+        border: none;
+        width: 90%;
+        padding:20px 5%;
+        background: #e3e3e3;
+        &::-webkit-input-placeholder {
+            color:black;
+            opacity: 0.3;
+        }
+    }
+    .signup_submit{
+        margin: auto;
+        width: 10%;
+        padding:5px;
+        font-size:18px;
+        
+    }            
 }

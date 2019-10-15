@@ -1,0 +1,15 @@
+.header{
+        display: flex;
+        padding: 50px 50px 50px 50px;
+        justify-content: space-between;
+    .logo{
+        //flex: 1;
+        font-size: 45px;
+        font-weight: bold;
+    }
+    .logout{
+        //flex: 0.2;
+        font-size: 25px;
+        color:  #2b2323;
+    }
+}
