@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import './styles.scss';
 
-export default class Upload extends Component {
+export default class index extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
+            <div className='upload_box'>
+                <input type='file'/>
+             </div>
         )
     }
 }
