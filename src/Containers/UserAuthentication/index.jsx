@@ -11,11 +11,8 @@ export default class UserAuthentication extends Component {
     render() {
         return (
             <div className='user-authentication-container'>
-                
-                {/* <Register /> */}
-                {/* <Login /> */}
-                {/* <Header />    */}
-                <Upload />
+                <Login />
+                <Register />
             </div>
         )
     }

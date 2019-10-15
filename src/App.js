@@ -1,11 +1,14 @@
 import React from 'react';
-import UserAuthentication from './Containers/UserAuthentication';
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from './Routes';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <UserAuthentication />
+      <Router>
+        <Routes />
+      </Router>
     </div>
   );
 }

@@ -5,7 +5,7 @@ export default class UserProfile extends Component {
     render() {
         return (
             <div>
-                
+                Hello, I am user profile
             </div>
         )
     }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './style.scss';
 
-// import './style.css'
 export default class Login extends Component {
     render() {
         return (
@@ -13,7 +12,6 @@ export default class Login extends Component {
                          <div className='signin_submit'><input type='submit'/></div>
                          <div><p className='sign_up'>Don't have an account? <u>Sign up</u></p></div>                      
                 </form> 
-                
             </div>
         )
     }
