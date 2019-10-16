@@ -7,12 +7,12 @@ export default class Register extends Component {
             <div className='signup_container'>
                 <h1 className='sign_up'>Sign up</h1>
                 <form>
-                    <div className='input_borders'><input placeholder='Organization'/></div>
-                    <div className='input_borders'><input placeholder='First Name'/></div>
-                    <div className='input_borders'><input placeholder='Last Name'/></div>
-                    <div className='input_borders'><input placeholder='Phone No.'/></div>
-                    <div className='input_borders'><input placeholder='Email'/></div>
-                    <div className='input_borders'><input type='password' placeholder='Password'/></div>
+                    <div className='input_borders'><span className='fa fa-university custom_icon'></span><input placeholder='Organization'/></div>
+                    <div className='input_borders'><span className='fa fa-user custom_icon'></span><input placeholder='First Name'/></div>
+                    <div className='input_borders'><span className='fa fa-user custom_icon'></span><input placeholder='Last Name'/></div>
+                    <div className='input_borders'><span className='fa fa-phone custom_icon'></span><input placeholder='Phone No.'/></div>
+                    <div className='input_borders'><span className='fa fa-envelope-o custom_icon'></span><input placeholder='Email'/></div>
+                    <div className='input_borders'><span className='fa fa-lock custom_icon'></span><input type='password' placeholder='Password'/></div>
                     <div className='signup_submit'><input type='submit'/></div>
                 </form>     
             </div>
