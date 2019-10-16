@@ -1,14 +1,21 @@
-import React, { Component } from 'react'
-import './styles.scss';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Login from '../../Components/Login';
 import Register from '../../Components/Register';
-import Header from '../../Components/Header';
-import Upload from '../../Containers/Upload';
+import { requestUserAuthentication } from '../../Actions/loginActions';
+import './styles.scss';
 
 
-
-export default class UserAuthentication extends Component {
+class UserAuthentication extends Component {
+    
+    
+    componentDidMount() {
+        this.props.requestUserAuthentication()
+    }
+    
     render() {
+        
         return (
             <div className='user-authentication-container'>
                 <Login />
@@ -17,3 +24,12 @@ export default class UserAuthentication extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = dispatch => ({
+	requestUserAuthentication: bindActionCreators(requestUserAuthentication, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserAuthentication);
