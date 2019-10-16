@@ -20,18 +20,18 @@ export default class Upload extends Component {
                 </div>
                 <div className='uploaded_files'>
                     <div className='extension'>BOX</div>
-                    <div className='uploaded_doc'>aadhar card</div>
+                    <div className='uploaded_doc'>DOC NAME</div>
                     <div className='uploaded_time'>12/12/12</div>
                 </div>
                 <div className='uploaded_files'>
                     <div className='extension'>BOX</div>
                     <div className='uploaded_doc'>DOC NAME</div>
-                    <div className='uploaded_time'>DATE</div>
+                    <div className='uploaded_time'>13/12/11</div>
                 </div>
                 <div className='uploaded_files'>
                     <div className='extension'>BOX</div>
                     <div className='uploaded_doc'>DOC NAME</div>
-                    <div className='uploaded_time'>DATE</div>
+                    <div className='uploaded_time'>08/09/10</div>
                 </div>
                    
             </div>

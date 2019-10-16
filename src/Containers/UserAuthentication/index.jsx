@@ -8,28 +8,47 @@ import './styles.scss';
 
 
 class UserAuthentication extends Component {
-    
-    
-    componentDidMount() {
-        this.props.requestUserAuthentication()
+    constructor() {
+        super();
+        this.state = {
+            isLogin: true,
+            access_token: ''
+        }
     }
-    
+    handleSignupClicked = () => {
+        this.setState({
+            isLogin: !this.state.isLogin
+        })
+    }
+
+    onLoginSubmit = (data) => {
+        this.props.requestUserAuthentication(data)
+    }
+
+    static getDerivedStateFromProps(newProps, State) {
+        if (localStorage.getItem('access_token')) {
+            newProps.history.push('layout/upload')
+        }
+        return State
+    }
     render() {
-        
         return (
             <div className='user-authentication-container'>
-                <Login />
-                <Register />
+                {
+                    this.state.isLogin
+                        ?
+                        <Login onSubmit={this.onLoginSubmit} handleSignupClicked={this.handleSignupClicked} />
+                        :
+                        <Register handleSigninClicked={this.handleSignupClicked} />
+                }
             </div>
         )
     }
 }
-
 const mapStateToProps = state => ({
+    user: state.user
 });
-
 const mapDispatchToProps = dispatch => ({
-	requestUserAuthentication: bindActionCreators(requestUserAuthentication, dispatch),
+    requestUserAuthentication: bindActionCreators(requestUserAuthentication, dispatch),
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(UserAuthentication);
