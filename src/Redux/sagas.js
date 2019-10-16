@@ -12,7 +12,7 @@ function* loginSaga(action) {
     const apiResponse = yield call(login, action.payload);
     console.log(apiResponse)
     if (apiResponse.data) {
-      localStorage.setItem('access_token', apiResponse.data.access_token)
+      apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
       yield put(successUserAuthentication(apiResponse.data));
     }
   } catch (e) {

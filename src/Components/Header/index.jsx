@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router';
 import './styles.scss';
 
-export default class Header extends Component {
+class Header extends Component {
+    
+    handleLogout = () => {
+        localStorage.removeItem('access_token')
+        this.props.history.push('')
+    }
+
     render() {
         return (
             <div>
                 <div className='header'>
                     <div className='logo'>LOGO</div>                
-                    <div className='logout'><u>Logout</u></div>
+                    <div className='logout clickable-item' onClick = {this.handleLogout}><u>Logout</u></div>
                 </div>
             </div>
         )
     }
 }
+
+export default withRouter(Header)

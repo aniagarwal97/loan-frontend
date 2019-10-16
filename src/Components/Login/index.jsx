@@ -19,7 +19,7 @@ export default class Login extends Component {
     }
 
     onSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.onSubmit(this.state)
     }
     render() {
