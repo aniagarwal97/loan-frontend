@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
- 
+    height: 300px;
     .map{
         width: 50%;
         background-color: cadetblue;
@@ -35,7 +35,6 @@ table, th {
     background-color: #f1f1f1;
     color:000008;
     font-size: 15px;
-    font-family: 'Courier New', Courier, monospace;
 }
 
 tr{
