@@ -1,0 +1,53 @@
+.user_container{
+    display: flex; 
+    justify-content: flex-start;
+    .custom_icon{
+        margin-top: 5px;
+    }
+    .uname{
+        margin-top: 0px;
+        margin-left: 12px;
+        font-size: 40px;
+    }
+}
+
+.profile{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+ 
+    .map{
+        width: 50%;
+        background-color: cadetblue;
+        margin-right: 10px; 
+    }
+    .chart{
+        margin-left: 10px; 
+        width: 50%;
+        background-color: crimson;
+    }
+}
+
+table, th {
+    border-bottom: 1px solid #cec9c9;
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    color:000008;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+tr{
+    color: #cec9c9;
+}
+
+td{
+    color: black;
+    padding: 10px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
