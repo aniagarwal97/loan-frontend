@@ -8,3 +8,11 @@ export function login(data) {
         data: {...data},
     })
 }
+
+export function registrationApi(data){
+    return axios({
+        method: 'POST',
+        url: `${API_BASE_URL}/registration`,
+        data: {...data},
+    })
+}

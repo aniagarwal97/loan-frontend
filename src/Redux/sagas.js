@@ -2,10 +2,10 @@ import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 //import { select } from 'redux-saga';
 import * as types from '../Utils/actionTypes';
 import {
-  login
+  login, registrationApi
 }
   from './apiCalls';
-import { successUserAuthentication } from '../Actions/loginActions';
+import { successUserAuthentication, successRequestUserRegistration } from '../Actions/authenticationActions';
 
 function* loginSaga(action) {
   try {
@@ -20,9 +20,21 @@ function* loginSaga(action) {
   }
 }
 
+function* registrationSaga(action){
+  try {
+    const apiResponse = yield call(registrationApi, action.payload);
+    if (apiResponse.data) {
+      apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
+      yield put(successUserAuthentication(apiResponse.data));
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
 export default function* rootSaga() {
   yield all([
     yield takeLatest(types.AUTHENTICATION.LOGIN_REQUEST, loginSaga),
+    yield takeLatest(types.AUTHENTICATION.REGISTRATION_REQUEST, registrationSaga)
     // add other watchers to the array
   ])
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Login from '../../Components/Login';
 import Register from '../../Components/Register';
-import { requestUserAuthentication } from '../../Actions/loginActions';
+import { requestUserAuthentication, requestUserRegistration } from '../../Actions/authenticationActions';
 import './styles.scss';
 
 
@@ -31,6 +31,10 @@ class UserAuthentication extends Component {
         }
         return State
     }
+
+    onRegistration = (data) => {
+        this.props.requestUserRegistration(data)
+    }
     render() {
         return (
             <div className='user-authentication-container'>
@@ -39,7 +43,7 @@ class UserAuthentication extends Component {
                         ?
                         <Login onSubmit={this.onLoginSubmit} handleSignupClicked={this.handleSignupClicked} />
                         :
-                        <Register handleSigninClicked={this.handleSignupClicked} />
+                        <Register handleSigninClicked={this.handleSignupClicked} handleRegistrationSubmit = {this.onRegistration}/>
                 }
             </div>
         )
@@ -50,5 +54,6 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
     requestUserAuthentication: bindActionCreators(requestUserAuthentication, dispatch),
+    requestUserRegistration: bindActionCreators(requestUserRegistration, dispatch)
 });
 export default connect(mapStateToProps, mapDispatchToProps)(UserAuthentication);
