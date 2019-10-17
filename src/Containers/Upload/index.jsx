@@ -1,6 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {withRouter} from 'react-router';
+
 import './style.scss'
-export default class Upload extends Component {
+class Upload extends Component {
+
+    handleDocumentClick = () => {
+        this.props.history.push('/layout/dashboard')
+    }
     render() {
         return (
             <div>
@@ -18,17 +24,17 @@ export default class Upload extends Component {
                     <div className='upload_doc'>UPLOADED DOCUMENTS</div>
                     <div className='upload_time'>CREATION DATE</div>
                 </div>
-                <div className='uploaded_files'>
+                <div className='uploaded_files clickable-item' onClick = {this.handleDocumentClick}>
                     <div className='extension'>BOX</div>
                     <div className='uploaded_doc'>DOC NAME</div>
                     <div className='uploaded_time'>12/12/12</div>
                 </div>
-                <div className='uploaded_files'>
+                <div className='uploaded_files clickable-item'>
                     <div className='extension'>BOX</div>
                     <div className='uploaded_doc'>DOC NAME</div>
                     <div className='uploaded_time'>13/12/11</div>
                 </div>
-                <div className='uploaded_files'>
+                <div className='uploaded_files clickable-item'>
                     <div className='extension'>BOX</div>
                     <div className='uploaded_doc'>DOC NAME</div>
                     <div className='uploaded_time'>08/09/10</div>
@@ -41,3 +47,5 @@ export default class Upload extends Component {
         )
     }
 }
+
+export default withRouter(Upload)

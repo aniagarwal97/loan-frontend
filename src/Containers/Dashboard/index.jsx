@@ -24,9 +24,9 @@ export default class Dashboard extends Component {
                     </div>
                     <div className='flex-container'>
                         {summaryCards.map((value, index) => {
-                            return (<div className={`item ${this.state.currentTab == value.key ? 'active' : ''}`} onClick={() => this.handleTabClick(value)}>
+                            return (<div className={`item clickable-item ${this.state.currentTab == value.key ? 'active' : ''}`} onClick={() => this.handleTabClick(value)}>
                                 <div>{value.title}</div>
-                                <div style={{marginTop: 10}}>{value.value}</div>
+                                <div style={{marginTop: 10, fontWeight: 800}}>{value.value}</div>
                             </div>)
                         })}                     
                     </div>
@@ -34,22 +34,34 @@ export default class Dashboard extends Component {
                
                 <div>
                      <table className='table'>
-                        <tr>
-                            <th>NRG CODE</th>
-                            <th>NUM EVENTS</th>
-                            <th>ALLOCATED CREDIT</th>
-                            <th>UTILIZED CREDIT</th>
-                            <th>ALLOC/UTIL RATE</th>
+                        <tr style={{borderBottom: '1px solid #cec9c9'}}>
+                            <th>NDG</th>
+                            <th>GBV</th>
+                            <th>TIPO PRESTITO</th>
+                            <th>GRANZIA</th>
                             <th>3 MON PREDICTION</th>
                         </tr>
 
+                        <tr style={{borderBottom: '1px solid #cec9c9'}}>
+                            <td>0001</td>
+                            <td>€1500</td>
+                            <td>Retail Secured</td>
+                            <td>S1, €1500</td>
+                            <td><span className='fa fa-check' style={{color: 'green'}}></span></td>
+                        </tr>
+                        <tr style={{borderBottom: '1px solid #cec9c9'}}>
+                            <td>0002</td>
+                            <td>€3500</td>
+                            <td>Retail Unsecured</td>
+                            <td>No</td>
+                            <td><span className='fa fa-times' style={{color: 'red'}}></span></td>
+                        </tr>
                         <tr>
-                            <td>14253654</td>
-                            <td>12</td>
-                            <td>5000</td>
-                            <td>1944</td>
-                            <td>39%</td>
-                            <td></td>
+                            <td>0003</td>
+                            <td>€2000</td>
+                            <td>Corporate Secured</td>
+                            <td>€1500</td>
+                            <td><span className='fa fa-check' style={{color: 'green'}}></span></td>
                         </tr>
                      </table>
                 </div>
