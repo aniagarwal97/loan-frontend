@@ -6,12 +6,13 @@ export default class Register extends Component {
     constructor(){
         super();
         this.state = {
-            organization : '',
-            first_name : '',
-            last_name : '',
+            org : '',
+            name : '',
+            sname : '',
             phone: '',
             email: '',
-            password: ''
+            password: '',
+            username: ''
         }
     }
 
@@ -19,6 +20,11 @@ export default class Register extends Component {
         this.setState({
             [field] : event.target.value
         })
+        if(field === 'email'){
+            this.setState({
+                username: event.target.value
+            })
+        }
     }
 
     handleSubmit = (e) => {

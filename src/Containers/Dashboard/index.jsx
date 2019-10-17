@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import './styles.scss';
 import { summaryCards } from '../../Utils/Constants';
+import { withRouter } from 'react-router';
+import './styles.scss';
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
 
     constructor(){
         super();
@@ -15,6 +16,10 @@ export default class Dashboard extends Component {
         this.setState({
             currentTab: tab.key
         })
+    }
+
+    handleTableRowClick = () => {
+        this.props.history.push('/layout/profile')
     }
     render() {
         return (
@@ -33,7 +38,7 @@ export default class Dashboard extends Component {
                 </div>                
                
                 <div>
-                     <table className='table'>
+                     <table className='table clickable-item'>
                         <tr style={{borderBottom: '1px solid #cec9c9'}}>
                             <th>NDG</th>
                             <th>GBV</th>
@@ -42,21 +47,21 @@ export default class Dashboard extends Component {
                             <th>3 MON PREDICTION</th>
                         </tr>
 
-                        <tr style={{borderBottom: '1px solid #cec9c9'}}>
+                        <tr style={{borderBottom: '1px solid #cec9c9'}} onClick = {this.handleTableRowClick}>
                             <td>0001</td>
                             <td>€1500</td>
                             <td>Retail Secured</td>
                             <td>S1, €1500</td>
                             <td><span className='fa fa-check' style={{color: 'green'}}></span></td>
                         </tr>
-                        <tr style={{borderBottom: '1px solid #cec9c9'}}>
+                        <tr style={{borderBottom: '1px solid #cec9c9'}} onClick = {this.handleTableRowClick}>
                             <td>0002</td>
                             <td>€3500</td>
                             <td>Retail Unsecured</td>
                             <td>No</td>
                             <td><span className='fa fa-times' style={{color: 'red'}}></span></td>
                         </tr>
-                        <tr>
+                        <tr onClick = {this.handleTableRowClick}>
                             <td>0003</td>
                             <td>€2000</td>
                             <td>Corporate Secured</td>
@@ -69,3 +74,6 @@ export default class Dashboard extends Component {
         )
     }
 }
+
+
+export default withRouter(Dashboard)
