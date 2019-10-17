@@ -1,10 +1,10 @@
 import axios from 'axios';
-// import { API_BASE_URL } from '../config.js';
+import { API_BASE_URL } from '../Utils/Config';
 
-export function login() {
+export function login(data) {
     return axios({
-        method: 'GET',
-        url: `https://reqres.in/api/users?page=2`,
-        data: {},
+        method: 'POST',
+        url: `${API_BASE_URL}/login`,
+        data: {...data},
     })
 }
