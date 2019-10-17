@@ -51,7 +51,9 @@
         //font-size: 12px;
         //font-weight: 100px;
             }
-    
+    .analysis{
+        padding-right: 30px;
+    }
 }
 .uploaded_files{
     background: #e3e3e3;
@@ -73,19 +75,27 @@
     .uploaded_doc{
         text-align: left;
         margin-left: 10px;
-        padding-top: 18px;
+        padding-top: 5px;
         font-size: 15px;
         font-weight: 100px;
         flex: 0.1;
-            }
+    }
     .uploaded_time{
         //padding-right: 30px;
-        text-align: right; 
+        text-align: center; 
         font-size: 15px;
         font-weight: 100px;
         flex: 0.87;
-        padding-top: 18px;
-
-            }
-
+        padding-top: 8px;
+        margin-left: 5px;
+        margin-right: 35px;
+    }
+     .analysis_doc{
+        padding-top: 5px;
+        height: 5%;
+        width: 5%;
+    }
+    .analysis_img{
+        margin-right: 15px;
+    }
 }
