@@ -1,0 +1,57 @@
+.signup_container{
+
+    font-weight: 300;
+    text-align: center;
+    margin-top: 25px;
+    .sign_up{
+         
+        margin: 30px;
+        font-size: 80px;
+    }
+    .input_borders{
+        display: flex;
+        text-align: left;
+        background: #e3e3e3;
+        width: 35%; 
+        margin: 15px;
+        border-radius:5px;
+        margin-left:auto;
+        margin-right:auto;
+        .custom_icon{
+            margin-left:15px; 
+            margin-top: 22px;
+            color: #998f8f;
+            }
+        } 
+              
+    
+    input{
+        // padding-left: 10%;
+        // padding-right: 10%;
+        border-radius:5px;
+        font-size: 18px;
+        border: none;
+        width: 90%;
+        padding:20px;
+        background: #e3e3e3;
+        &::-webkit-input-placeholder {
+            color:black;
+            opacity: 0.3;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+
+    .signup_submit{
+        margin: auto;
+        width: 10%;
+        padding:5px;
+        font-size:18px;
+        
+    } 
+    .sign_in{
+        color: #999999;
+        font-size: 20px;
+             }           
+}
