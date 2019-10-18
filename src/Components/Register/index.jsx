@@ -38,15 +38,15 @@ export default class Register extends Component {
                 <form>
                     <div className='input_borders'>
                         <span className='fa fa-university custom_icon'></span>
-                        <input placeholder='Organization' onChange = {(event) => {this.handleInputs(event, 'organization')}}/>
+                        <input placeholder='Organization' onChange = {(event) => {this.handleInputs(event, 'org')}}/>
                     </div>
                     <div className='input_borders'>
                         <span className='fa fa-user custom_icon'></span>
-                        <input placeholder='First Name' onChange = {(event) => {this.handleInputs(event, 'first_name')}}/>
+                        <input placeholder='First Name' onChange = {(event) => {this.handleInputs(event, 'name')}}/>
                     </div>
                     <div className='input_borders'>
                         <span className='fa fa-user custom_icon'></span>
-                        <input placeholder='Last Name' onChange = {(event) => {this.handleInputs(event, 'last_name')}}/>
+                        <input placeholder='Last Name' onChange = {(event) => {this.handleInputs(event, 'sname')}}/>
                     </div>
                     <div className='input_borders'>
                         <span className='fa fa-phone custom_icon'></span>
