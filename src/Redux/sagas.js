@@ -1,11 +1,12 @@
-import { all, takeLatest, call, put, select } from 'redux-saga/effects';
+import { all, takeLatest, call, put } from 'redux-saga/effects';
 //import { select } from 'redux-saga';
 import * as types from '../Utils/actionTypes';
 import {
-  login, registrationApi
+  login, registrationApi, fetchDocumentApi, uploadDocumentApi
 }
   from './apiCalls';
-import { successUserAuthentication, successRequestUserRegistration } from '../Actions/authenticationActions';
+import { successUserAuthentication } from '../Actions/authenticationActions';
+import { successFetchDocuments, fetchDocuments } from '../Actions/documentActions';
 
 function* loginSaga(action) {
   try {
@@ -31,10 +32,38 @@ function* registrationSaga(action){
     console.log(e)
   }
 }
+
+function* fetchDocumentsSaga(action){
+  try {
+    var token = localStorage.getItem('access_token')
+    const apiResponse = yield call(fetchDocumentApi, token);
+    if (apiResponse.data.success) {
+      yield put(successFetchDocuments(apiResponse.data))
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+function* uploadDocumentSaga(action) {
+  try {
+    var token = localStorage.getItem('access_token')
+    const apiResponse = yield call(uploadDocumentApi, token, action.payload);
+    if (apiResponse.data.success) {
+      yield put(fetchDocuments())
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
 export default function* rootSaga() {
   yield all([
     yield takeLatest(types.AUTHENTICATION.LOGIN_REQUEST, loginSaga),
-    yield takeLatest(types.AUTHENTICATION.REGISTRATION_REQUEST, registrationSaga)
+    yield takeLatest(types.AUTHENTICATION.REGISTRATION_REQUEST, registrationSaga),
+    yield takeLatest(types.DOCUMENT.FETCH_DOCUMENTS, fetchDocumentsSaga),
+    yield takeLatest(types.DOCUMENT.UPLOAD_DOCUMENT, uploadDocumentSaga)
     // add other watchers to the array
   ])
 }

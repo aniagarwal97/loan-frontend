@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { summaryCards } from '../../Utils/Constants';
 import { withRouter } from 'react-router';
 import './styles.scss';
+// import CustomMapBox from '../../Components/CustomMapBox';
 
 class Dashboard extends Component {
 
@@ -26,10 +27,11 @@ class Dashboard extends Component {
             <div>
                 <div className='dashboard'>
                     <div className='map'>
+                        {/* <CustomMapBox /> */}
                     </div>
                     <div className='flex-container'>
                         {summaryCards.map((value, index) => {
-                            return (<div className={`item clickable-item ${this.state.currentTab == value.key ? 'active' : ''}`} onClick={() => this.handleTabClick(value)}>
+                            return (<div className={`item clickable-item ${this.state.currentTab === value.key ? 'active' : ''}`} onClick={() => this.handleTabClick(value)}>
                                 <div>{value.title}</div>
                                 <div style={{marginTop: 10, fontWeight: 800}}>{value.value}</div>
                             </div>)
