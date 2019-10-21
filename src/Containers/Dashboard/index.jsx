@@ -38,7 +38,10 @@ class Dashboard extends Component {
                         })}
                     </div>
                 </div>
-
+                <div className='export_to_excel'>
+                    <div className='search_bar'><input type="text" placeholder="Search.." size='55'/></div>
+                    <div>Export to excel page<span className='fa fa-file-excel-o custom_icon'></span></div>
+                </div>
                 <div>
                     <table className='table clickable-item'>
                         <thead>
