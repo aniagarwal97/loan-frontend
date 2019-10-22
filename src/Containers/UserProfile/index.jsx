@@ -11,7 +11,7 @@ class UserProfile extends Component {
         return (
             <div>
                 <div className='user_container'>
-                    <span className='fa fa-arrow-left fa-2x custom_icon clickable-item' onClick = {this.handleBackButton}></span>
+                    <span className='fa fa-arrow-left fa-2x custom_icon clickable-item' title = 'Go back to Dashboard' onClick = {this.handleBackButton}></span>
                     <h1 className='uname'>Charlotte Walker</h1>
                 </div>
 
@@ -20,7 +20,7 @@ class UserProfile extends Component {
                     <div className='chart'></div>
                 </div>
                 <div>
-                    <table className='table'>
+                    <table className='table' style={{boxShadow: '6px 6px 6px grey'}}>
                         <tr>
                             <th>NDG</th>
                             <th>GBV</th>

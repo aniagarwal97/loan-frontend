@@ -21,7 +21,7 @@ class Upload extends Component {
     }
     render() {
         return (
-            <div style = {{marginBottom: 20}}>
+            <div style = {{margin: '34px 0'}}>
                 <div className='upload_container'>
                     <label>
                         <div className='uploader'>
