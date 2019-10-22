@@ -15,7 +15,8 @@ export default class CustomMapBox extends Component {
                     style="mapbox://styles/mapbox/streets-v9"
                     containerStyle={{
                         height: '283px',
-                        width: '500px'
+                        width: '500px',
+                        border: '1px solid grey'
                     }}
                 >
                     <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
@@ -30,7 +31,7 @@ export default class CustomMapBox extends Component {
                         coordinates={[-0.481747846041145, 49.3233379650232]}
                         anchor="bottom">
                         <img style={{ width: 30, height: 'auto' }} alt='alt' src={require('../../Assets/map-icon.png')} />
-                    </Marker>                    
+                    </Marker>
                     <Marker
                         coordinates={[-0.481747846041145, 52.3233379650232]}
                         anchor="bottom">
