@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
+import { red } from 'ansi-colors';
 
 
 const Map = ReactMapboxGl({
@@ -23,19 +24,34 @@ export default class CustomMapBox extends Component {
                         <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
                     </Layer>
                     <Marker
-                        coordinates={[76.030449, 22.309719]}
+                        coordinates={[10.8719, 0.309719]}
                         anchor="bottom">
-                        <img style={{ width: 30, height: 'auto' }} alt='alt' src={require('../../Assets/map-icon.png')} />
+                         <div style = {{width: 8, height: 8, border: '3px solid red', borderRadius: '25px'}}> </div>
+                    </Marker>
+                    <Marker
+                        coordinates={[15.030449, 2.309719]}
+                        anchor="bottom">
+                        <div style = {{width: 8, height: 8, border: '3px solid red', borderRadius: '25px'}}> </div>
+                    </Marker>
+                    <Marker
+                        coordinates={[20.030449, 4.309719]}
+                        anchor="bottom">
+                         <div style = {{width: 8, height: 8, border: '3px solid red', borderRadius: '25px'}}> </div>
+                    </Marker>
+                    <Marker
+                        coordinates={[25.030449, 6.309719]}
+                        anchor="bottom">
+                         <div style = {{width: 8, height: 8, border: '3px solid green', borderRadius: '25px'}}> </div>
                     </Marker>
                     <Marker
                         coordinates={[-0.481747846041145, 49.3233379650232]}
                         anchor="bottom">
-                        <img style={{ width: 30, height: 'auto' }} alt='alt' src={require('../../Assets/map-icon.png')} />
+                         <div style = {{width: 8, height: 8, border: '3px solid green', borderRadius: '25px'}}> </div>
                     </Marker>
                     <Marker
                         coordinates={[-0.481747846041145, 52.3233379650232]}
                         anchor="bottom">
-                        <img style={{ width: 30, height: 'auto' }} alt='alt' src={require('../../Assets/map-icon.png')} />
+                         <div style = {{width: 8, height: 8, border: '3px solid red', borderRadius: '25px'}}> </div>
                     </Marker>
                     <Layer
                         type="symbol"
