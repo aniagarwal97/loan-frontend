@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import Chart from '../../Components/Chart';
+
 import './styles.scss';
 
 class UserProfile extends Component {
@@ -16,9 +18,20 @@ class UserProfile extends Component {
                 </div>
 
                 <div className='profile'>
-                    <div className='map'></div>
-                    <div className='chart'></div>
+                    <div className='map'>
+                    </div>
+                        
+                    <div className='cha'>
+                        <div className='item1'>
+                                <h6><span>4000</span> out of 5000</h6>
+                                <h6>By 1st of January</h6>
+                        </div>
+                        <div className='chart'>
+                            <Chart />
+                        </div>
+                    </div>
                 </div>
+            
                 <div>
                     <table className='table' style={{boxShadow: '6px 6px 6px grey'}}>
                         <tr>
