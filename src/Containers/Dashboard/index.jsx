@@ -98,7 +98,7 @@ class Dashboard extends Component {
                                 <th>NDG</th>
                                 <th>GBV</th>
                                 <th>TIPO PRESTITO</th>
-                                <th>GRANZIA</th>
+                                <th>GARANZIA</th>
                                 <th>3 MON PREDICTION</th>
                             </tr>
                         </thead>

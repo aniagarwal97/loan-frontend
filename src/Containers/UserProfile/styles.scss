@@ -23,20 +23,15 @@
     }
     .cha{
         background-color:#eff0f2;
-        width: 50%;
+        width: 100%;
 
         .item1{
             display: flex;
             justify-content: space-between;
         }
         .chart{
-            margin-right: 20px; 
             margin-top: 0px;
-            margin-bottom: 1000px;
-            margin-left:40px;
-            width: 80%;
-            height: 60%;
-            // background-color: rgb(219, 229, 231);
+            width: 100%;
         }
     }
 }
