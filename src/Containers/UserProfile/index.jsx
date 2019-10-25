@@ -18,8 +18,8 @@ class UserProfile extends Component {
                 </div>
 
                 <div className='profile'>
-                    <div className='map'>
-                    </div>
+                    {/* <div className='map'>
+                    </div> */}
                         
                     <div className='cha'>
                         <div className='item1'>
