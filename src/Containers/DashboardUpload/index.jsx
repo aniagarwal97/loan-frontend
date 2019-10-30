@@ -6,8 +6,17 @@ export default class DashboardUpload extends Component {
     render() {
         return (
             <div>
-                hey this is DashboardUpload page
+                <div className='upload_container'>
+                    <label>
+                        <div className='uploader'>
+                            <span className="fa fa-upload custom_upload_icon"></span>
+                                <input className='upload_files' type="file" name="file" onChange={this.handleFile}/>
+                            <div className='upload_doc'><u>Upload Documents</u></div>
+                        </div>
+                    </label>
+                </div>
             </div>
+
         )
     }
 }

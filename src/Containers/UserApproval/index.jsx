@@ -14,22 +14,22 @@ export default class UserApproval extends Component {
                 <div className="list_user">
                     <div className="user_name">Aniruddh</div>
                     <div className="org">ExternLabs</div>
-                    <div className="req"><span className='fa fa-check' style={{ color: 'green', border: '2px solid green', padding: 2 }}></span> / <span className='fa fa-times' style={{ color: 'red', border: '2px solid red', padding: '2px 4px' }}></span></div>
+                    <div className="req"><span className="accept">Accept</span> / <span className="reject">Reject</span></div>
                 </div>
                 <div className="list_user">
                     <div className="user_name">Zach</div>
                     <div className="org">ABC</div>
-                    <div className="req"><span className='fa fa-check' style={{ color: 'green', border: '2px solid green', padding: 2 }}></span> / <span className='fa fa-times' style={{ color: 'red', border: '2px solid red', padding: '2px 4px' }}></span></div>
+                    <div className="req"><span className="accept">Accept</span> / <span className="reject">Reject</span></div>
                 </div>
                 <div className="list_user">
                     <div className="user_name">Mike</div>
                     <div className="org">DEF</div>
-                    <div className="req"><span className='fa fa-check' style={{ color: 'green', border: '2px solid green', padding: 2 }}></span> / <span className='fa fa-times' style={{ color: 'red', border: '2px solid red', padding: '2px 4px' }}></span></div>
+                    <div className="req"><span className="accept">Accept</span> / <span className="reject">Reject</span></div>
                 </div>
                 <div className="list_user">
                     <div className="user_name">Mark</div>
                     <div className="org">GHI</div>
-                    <div className="req"><span className='fa fa-check' style={{ color: 'green', border: '2px solid green', padding: 2 }}></span> / <span className='fa fa-times' style={{ color: 'red', border: '2px solid red', padding: '2px 4px' }}></span></div>
+                    <div className="req"><span className="accept">Accept</span> / <span className="reject">Reject</span></div>
                 </div>
 
             </div>

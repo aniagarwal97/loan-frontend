@@ -18,7 +18,7 @@
 }
 .request{
     flex: 0.07;
-    margin-right: 20px;
+    margin-right: 25px;
     //margin-bottom: 5px;
 }
 }
@@ -34,15 +34,30 @@
 .user_name{
     flex: 0.3;
     margin-left: 20px;
-}
-.org{
-    flex: 0.3;
-}
-.req{
-    flex: 0.07;
-    margin-left: 5px;
-    //margin-right: 5px;
-    //margin-bottom: 5px;
-}
-}
+    }
+    .org{
+        flex: 0.3;
+    }
+    .req{
+        flex: -0.90;
+        //margin-left: 5px;
+        margin-right: 25px;
+        //margin-right: 5px;
+        //margin-bottom: 5px;
+    .accept{
+        padding: 2px;
+        color: green;
+        //background: green;
+        border-radius: 5px;
+        //border-bottom: 2px solid green;
+        }
+    .reject{
+        padding: 2px;
+        color: red;
+        //background: red;
+        border-radius: 5px;
+        //border-bottom: 2px solid red;
+        }
+    }
+    }
 }
