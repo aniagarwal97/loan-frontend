@@ -1,20 +1,24 @@
+.background{
+    background: #3A3A40;
 .upload_files_head{
     background: #e3e3e3;
-    color: rgb(184, 174, 174);
+    color: rgb(0, 0, 0);
     margin-top: 15px;
     padding: 10px;
     display: flex;
     font-size: 12px;
-    font-weight: 100px;
+    font-weight: 100px bold;
     //margin: 50px 0;
     justify-content: space-between;
-    border-bottom:2px solid #beb5b5;    
+    border-bottom:2px solid #cfc7dd;    
     .upload_doc{
+        //color: #9a55ff;
         padding-left: 20px;
         //font-size: 12px;
         //font-weight: 100px;
             }
     .upload_time{
+        //color: #9a55ff;
         padding-right: 20px; 
         //font-size: 12px;
         //font-weight: 100px;
@@ -27,7 +31,7 @@
     padding: 10px;
     display: flex;
     //margin: 50px 0;
-    border-bottom:2px solid #beb5b5;    
+    border-bottom:2px solid #9a55ff;
     .extension{
         background: #b1abab;
         height: 35px;
@@ -54,4 +58,5 @@
         padding-top: 18px;
 
             }
+    }
 }

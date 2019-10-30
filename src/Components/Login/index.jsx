@@ -39,7 +39,7 @@ export default class Login extends Component {
                         <input type='submit' onClick={this.onSubmit} />
                     </div>
                     <div>
-                        <p className='sign_up'>Don't have an account? <u className='clickable-item' onClick={this.props.handleSignupClicked}>Sign up</u></p>
+                        <p className='sign_up'>Don't have an account? <span className='clickable-item' onClick={this.props.handleSignupClicked}>Sign up</span></p>
                     </div>
                 </form>
             </div>

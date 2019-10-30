@@ -16,8 +16,8 @@ export default class CustomMapBox extends Component {
                     style="mapbox://styles/mapbox/streets-v9"
                     containerStyle={{
                         height: '283px',
-                        width: '500px',
-                        border: '1px solid grey'
+                        width: '507px',
+                        //border: '1px solid grey'
                     }}
                 >
                     <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
