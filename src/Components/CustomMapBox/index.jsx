@@ -14,8 +14,8 @@ export default class CustomMapBox extends Component {
                     style="mapbox://styles/mapbox/streets-v9"
                     containerStyle={{
                         height: '283px',
-                        width: '500px',
-                        border: '1px solid grey'
+                        width: '507px',
+                        //border: '1px solid grey'
                     }}
                     center={[9.1900, 45.4642]}
                 >

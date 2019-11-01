@@ -66,7 +66,7 @@ export default class Register extends Component {
                     <div>
                         <p className='sign_in'>
                             Already have an account? 
-                            <u className='clickable-item' onClick = {this.props.handleSigninClicked}>Sign in</u>
+                            <span className='clickable-item' onClick = {this.props.handleSigninClicked}> Sign in</span>
                         </p>
                     </div>
                 </form>     
