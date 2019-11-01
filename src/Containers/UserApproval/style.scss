@@ -61,3 +61,16 @@
     }
     }
 }
+
+.user_approval_table{
+    .accept{
+        padding: 2px;
+        color: green;
+        border-radius: 5px;
+        }
+    .reject{
+        padding: 2px;
+        color: red;
+        border-radius: 5px;
+        }
+}
