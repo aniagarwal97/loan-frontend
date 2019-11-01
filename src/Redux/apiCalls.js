@@ -42,3 +42,17 @@ export function uploadDocumentApi(token, data) {
         data
     })
 }
+
+
+export function fetchInactiveUsersAPI(token) {
+    return axios({
+        method: 'GET',
+        url: `${API_BASE_URL}/users`,
+        data: {},
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+    })
+}
