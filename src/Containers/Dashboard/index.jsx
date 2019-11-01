@@ -106,7 +106,7 @@ class Dashboard extends Component {
                             {
                                 tableData.map((value, index) => {
                                     return (
-                                        <tr style={{ borderBottom: '1px solid #9a55ff' }} onClick={this.handleTableRowClick}>
+                                        <tr style={{ borderBottom: '1px solid #c5bfbf' }} onClick={this.handleTableRowClick}>
                                             <td>{value.ndg}</td>
                                             <td>{value.gbv}</td>
                                             <td>{value.tipo_prestito}</td>

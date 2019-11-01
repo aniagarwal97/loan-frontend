@@ -42,21 +42,21 @@ class UserProfile extends Component {
                             <th>3 MON PREDICTION</th>
                         </tr>
 
-                        <tr style={{borderBottom: '1px solid #9a55ff'}}>
+                        <tr style={{borderBottom: '1px solid #c5bfbf'}}>
                             <td>0001</td>
                             <td>€1500</td>
                             <td>Retail Secured</td>
                             <td>S1, €1500</td>
                             <td><span className='fa fa-check' style={{color: 'green'}}></span></td>
                         </tr>
-                        <tr style={{borderBottom: '1px solid #9a55ff'}}>
+                        <tr style={{borderBottom: '1px solid #c5bfbf'}}>
                             <td>0002</td>
                             <td>€3500</td>
                             <td>Retail Unsecured</td>
                             <td>No</td>
                             <td><span className='fa fa-times' style={{color: 'red'}}></span></td>
                         </tr>
-                        <tr style={{borderBottom: '1px solid #9a55ff'}}>
+                        <tr style={{borderBottom: '1px solid #c5bfbf'}}>
                             <td>0003</td>
                             <td>€2000</td>
                             <td>Corporate Secured</td>
