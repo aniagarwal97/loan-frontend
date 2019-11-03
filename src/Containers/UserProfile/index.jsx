@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import Chart from '../../Components/Chart';
+
 import './styles.scss';
 
 class UserProfile extends Component {
@@ -16,9 +18,20 @@ class UserProfile extends Component {
                 </div>
 
                 <div className='profile'>
-                    <div className='map'></div>
-                    <div className='chart'></div>
+                    {/* <div className='map'>
+                    </div> */}
+                        
+                    <div className='cha'>
+                        <div className='item1'>
+                                <h6><span>4000</span> out of 5000</h6>
+                                <h6>By 1st of January</h6>
+                        </div>
+                        <div className='chart'>
+                            <Chart />
+                        </div>
+                    </div>
                 </div>
+            
                 <div>
                     <table className='table' style={{boxShadow: '6px 6px 6px grey'}}>
                         <tr>
@@ -29,21 +42,21 @@ class UserProfile extends Component {
                             <th>3 MON PREDICTION</th>
                         </tr>
 
-                        <tr style={{borderBottom: '1px solid #cec9c9'}}>
+                        <tr style={{borderBottom: '1px solid #c5bfbf'}}>
                             <td>0001</td>
                             <td>€1500</td>
                             <td>Retail Secured</td>
                             <td>S1, €1500</td>
                             <td><span className='fa fa-check' style={{color: 'green'}}></span></td>
                         </tr>
-                        <tr style={{borderBottom: '1px solid #cec9c9'}}>
+                        <tr style={{borderBottom: '1px solid #c5bfbf'}}>
                             <td>0002</td>
                             <td>€3500</td>
                             <td>Retail Unsecured</td>
                             <td>No</td>
                             <td><span className='fa fa-times' style={{color: 'red'}}></span></td>
                         </tr>
-                        <tr>
+                        <tr style={{borderBottom: '1px solid #c5bfbf'}}>
                             <td>0003</td>
                             <td>€2000</td>
                             <td>Corporate Secured</td>

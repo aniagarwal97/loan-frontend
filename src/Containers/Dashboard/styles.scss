@@ -5,6 +5,7 @@
 
     .map{
         width: 50%;
+        border: 1px solid #a5a0a0;
     }
     .flex-container{       
         display: flex;      
@@ -17,6 +18,7 @@
             padding: 3%;
             margin: 2%;
             border: 2px solid #f1f1f1;
+            box-shadow: 5px 5px 8px grey;
             &:nth-child(2n){
                 margin-right: 0;
             }
@@ -50,7 +52,7 @@
         .active{
             background:#ffffff;  
             border: 2px solid #c5bfbf;  
-            border-radius: 3px;               
+            border-radius: 3px;   
         }       
     }
 }
@@ -61,14 +63,14 @@
     .search_bar{
         font-size: 20px;
         input{
-            border: 1px solid rgb(197, 183, 183); 
+            border: 1px solid #c5bfbf; 
             border-radius: 5px;
             padding-left: 5px;
             height: 33px;
         }
     }
     .export-excel{
-        border: 1px solid grey;
+        border: 1px solid #c5bfbf;
         border-radius: 4px;
         padding-left: 5px;
         padding-bottom: 6px;
@@ -81,7 +83,7 @@
     }
     
 table, th {
-    border-bottom: 1px solid #cec9c9;
+    border-bottom: 1px solid #c5bfbf;
     text-align: center;
     padding: 10px;
     background-color: #f1f1f1;

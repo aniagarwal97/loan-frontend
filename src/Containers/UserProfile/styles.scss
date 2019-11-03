@@ -21,10 +21,18 @@
         background-color: cadetblue;
         margin-right: 10px; 
     }
-    .chart{
-        margin-left: 10px; 
-        width: 50%;
-        background-color: crimson;
+    .cha{
+        background-color:#eff0f2;
+        width: 100%;
+
+        .item1{
+            display: flex;
+            justify-content: space-between;
+        }
+        .chart{
+            margin-top: 0px;
+            width: 100%;
+        }
     }
 }
 

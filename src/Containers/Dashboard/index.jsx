@@ -98,7 +98,7 @@ class Dashboard extends Component {
                                 <th>NDG</th>
                                 <th>GBV</th>
                                 <th>TIPO PRESTITO</th>
-                                <th>GRANZIA</th>
+                                <th>GARANZIA</th>
                                 <th>3 MON PREDICTION</th>
                             </tr>
                         </thead>
@@ -106,7 +106,7 @@ class Dashboard extends Component {
                             {
                                 tableData.map((value, index) => {
                                     return (
-                                        <tr style={{ borderBottom: '1px solid #cec9c9' }} onClick={this.handleTableRowClick}>
+                                        <tr style={{ borderBottom: '1px solid #c5bfbf' }} onClick={this.handleTableRowClick}>
                                             <td>{value.ndg}</td>
                                             <td>{value.gbv}</td>
                                             <td>{value.tipo_prestito}</td>

@@ -13,7 +13,7 @@ class Header extends Component {
         return (
             <div className='header'>
                 <div className='logo'><img src={require('../../Assets/logo_ZT.png')} alt='logo' width='180' height='100' /></div>
-                <div className='logout clickable-item' onClick={this.handleLogout}><u>Logout</u></div>
+                <div className='logout clickable-item' onClick={this.handleLogout}><span>Logout</span></div>
             </div>
         )
     }
