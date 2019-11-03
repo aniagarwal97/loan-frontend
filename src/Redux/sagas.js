@@ -8,6 +8,7 @@ import {
 import { successUserAuthentication } from '../Actions/authenticationActions';
 import { successFetchDocuments, fetchDocuments } from '../Actions/documentActions';
 import { successFetchInactiveUsers } from '../Actions/UserApproval';
+import { toast } from 'react-toastify';
 
 function* loginSaga(action) {
   try {
@@ -28,6 +29,7 @@ function* registrationSaga(action){
     if (apiResponse.data) {
       apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
       yield put(successUserAuthentication(apiResponse.data));
+      toast.success('User Registered successfully')
     }
   } catch (e) {
     console.log(e)
