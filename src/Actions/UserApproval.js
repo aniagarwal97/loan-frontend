@@ -13,3 +13,8 @@ export const approveUser = (payload) => ({
     type: USER_APPROVAL.APPROVE_USER,
     payload
 })
+
+export const rejectUser = (payload) => ({
+    type: USER_APPROVAL.REJECT_USER,
+    payload
+})

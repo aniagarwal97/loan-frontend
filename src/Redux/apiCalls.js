@@ -56,3 +56,85 @@ export function fetchInactiveUsersAPI(token) {
         },
     })
 }
+
+export function approveUserApi(token, data) {
+    return axios({
+        method: 'POST',
+        url: `${API_BASE_URL}/approve-users`,
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        data
+    })
+}
+
+
+export function rejectUserApi(token, data) {
+    return axios({
+        method: 'POST',
+        url: `${API_BASE_URL}/reject-users`,
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        data
+    })
+}
+
+export function fetchAllDocumentsApi(token) {
+    return axios({
+        method: 'GET',
+        url: `${API_BASE_URL}/upload-analysis`,
+        data: {},
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+    })
+}
+
+export function uploadAnalysisReport(token, data){
+    return axios({
+        method: 'POST',
+        url: `${API_BASE_URL}/upload-analysis`,
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        data
+    })
+}
+
+export function fetchDashboardData(token, params) {
+    return axios({
+        method: 'GET',
+        url: `${API_BASE_URL}/dashboard`,
+        data: {},
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        params: params
+    })
+}
+
+export function fetchProfileData(token, params) {
+    return axios({
+        method: 'GET',
+        url: `${API_BASE_URL}/profile`,
+        data: {},
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        params: params
+    })
+}
+

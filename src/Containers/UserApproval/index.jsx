@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './style.scss'
-import { fetchInactiveUsers } from '../../Actions/UserApproval';
+import { fetchInactiveUsers, approveUser, rejectUser } from '../../Actions/UserApproval';
 
 class UserApproval extends Component {
 
@@ -10,8 +10,12 @@ class UserApproval extends Component {
         this.props.fetchInactiveUsers()
     }
 
-    handleAcceptUser = (user) => {
-        
+    handleAcceptUser = (user_id) => {
+        this.props.approveUser({user_id : user_id})
+    }
+
+    handleRejectUser = (user_id) => {
+        this.props.rejectUser({user_id : user_id})
     }
     render() {
         return (
@@ -30,12 +34,12 @@ class UserApproval extends Component {
                         {
                             this.props.inactiveUsers && this.props.inactiveUsers.length && this.props.inactiveUsers.map((value, index) => {
                                 return (
-                                    <tr>
+                                    <tr key={index}>
                                         <td>{value.first_name}</td>
                                         <td>{value.second_name}</td>
                                         <td>{value.email}</td>
                                         <td>{value.org}</td>
-                                        <td className='clickable-item'><span className="accept" onClick = {() => {this.handleAcceptUser(value.email)}}>Accept</span> / <span className="reject">Reject</span></td>
+                                        <td className='clickable-item'><span className="accept" onClick = {() => {this.handleAcceptUser(value.guid)}}>Accept</span> / <span onClick = {() => {this.handleRejectUser(value.guid)}} className="reject">Reject</span></td>
                                     </tr>)
                             })
                         }
@@ -52,5 +56,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
     fetchInactiveUsers: bindActionCreators(fetchInactiveUsers, dispatch),
+    approveUser: bindActionCreators(approveUser, dispatch),
+    rejectUser: bindActionCreators(rejectUser, dispatch),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(UserApproval);
