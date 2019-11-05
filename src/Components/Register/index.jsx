@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router';
 import './style.scss';
 
 export default class Register extends Component {
@@ -74,3 +75,4 @@ export default class Register extends Component {
         )
     }
 }
+

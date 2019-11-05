@@ -56,4 +56,5 @@ const mapDispatchToProps = dispatch => ({
     requestUserAuthentication: bindActionCreators(requestUserAuthentication, dispatch),
     requestUserRegistration: bindActionCreators(requestUserRegistration, dispatch)
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(UserAuthentication);
