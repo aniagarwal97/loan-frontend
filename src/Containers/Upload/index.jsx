@@ -8,7 +8,7 @@ import './style.scss';
 class Upload extends Component {
 
     handleDocumentClick = (guid) => {
-        this.props.history.push('/layout/dashboard')
+        this.props.history.push('/app/layout/dashboard')
         localStorage.setItem('selected_dashboard_document', guid)
     }
 

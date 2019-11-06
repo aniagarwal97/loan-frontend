@@ -7,7 +7,7 @@ class Header extends Component {
 
     handleLogout = () => {
         localStorage.removeItem('access_token')
-        this.props.history.push('/login')
+        this.props.history.push('/app/login')
     }
 
     render() {

@@ -28,13 +28,13 @@ class Login extends Component {
 
     static getDerivedStateFromProps(newProps, State) {
         if (localStorage.getItem('access_token')) {
-            newProps.history.push('layout/upload')
+            newProps.history.push('/app/layout/upload')
         }
         return State
     }
 
     handleSignupClicked = () => {
-        this.props.history.push('/register')
+        this.props.history.push('/app/register')
     }
 
     render() {

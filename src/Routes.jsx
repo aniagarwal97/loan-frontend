@@ -9,9 +9,9 @@ export default class Routes extends Component {
     render() {
         return (
             <div>
-                <Route path="/register" exact = {true} component={Register} />
-                <Route path="/login" exact = {true} component={Login} />
-                <Route path="/layout" component = {Layout} />
+                <Route path="/app/register" exact = {true} component={Register} />
+                <Route path="/app/login" exact = {true} component={Login} />
+                <Route path="/app/layout" component = {Layout} />
             </div>
         )
     }

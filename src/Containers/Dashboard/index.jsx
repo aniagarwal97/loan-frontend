@@ -25,11 +25,11 @@ class Dashboard extends Component {
 
     handleTableRowClick = (guid) => {
         localStorage.setItem('selected_user', guid)
-        this.props.history.push('/layout/profile')
+        this.props.history.push('/app/layout/profile')
     }
 
     handleBackButton = () => {
-        this.props.history.push('/layout/upload')
+        this.props.history.push('/app/layout/upload')
     }
 
     exportDashboardData = () => {

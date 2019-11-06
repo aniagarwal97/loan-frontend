@@ -13,7 +13,7 @@ class DocumentList extends Component {
 
     handleDocumentSelect = (guid) => {
         this.props.setParsingDocument(guid);
-        this.props.history.push('/layout/dashboard-upload')
+        this.props.history.push('/app/layout/dashboard-upload')
         localStorage.setItem('adminCurrentDocument', guid)
     }
     render() {

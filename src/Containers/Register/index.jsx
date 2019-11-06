@@ -36,7 +36,7 @@ class Register extends Component {
     }
 
     handleSigninClicked = () => {
-        this.props.history.push('/login')
+        this.props.history.push('/app/login')
     }
     render() {
         return (

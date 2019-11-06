@@ -9,7 +9,7 @@ import { fetchProfile } from '../../Actions/profileActions';
 class UserProfile extends Component {
 
     handleBackButton = () => {
-        this.props.history.push('/layout/dashboard')
+        this.props.history.push('/app/layout/dashboard')
     }
 
     componentDidMount(){
