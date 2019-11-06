@@ -47,7 +47,7 @@ class UserProfile extends Component {
                     </div>
                 </div>
             
-                <div>
+                {/* <div>
                     <table className='table' style={{boxShadow: '6px 6px 6px grey'}}>
                         <thead>
                         <tr>
@@ -82,7 +82,7 @@ class UserProfile extends Component {
                         </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> */}
             </div>
         )
     }
