@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { requestUserAuthentication, requestUserRegistration } from '../../Actions/authenticationActions';
 import './style.scss';
 
-export default class Login extends Component {
+class Login extends Component {
 
     constructor() {
         super();
@@ -20,8 +23,20 @@ export default class Login extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onSubmit(this.state)
+        this.props.requestUserAuthentication(this.state)
     }
+
+    static getDerivedStateFromProps(newProps, State) {
+        if (localStorage.getItem('access_token')) {
+            newProps.history.push('layout/upload')
+        }
+        return State
+    }
+
+    handleSignupClicked = () => {
+        this.props.history.push('/register')
+    }
+
     render() {
         return (
             <div className='login_container'>
@@ -39,10 +54,20 @@ export default class Login extends Component {
                         <input type='submit' onClick={this.onSubmit} />
                     </div>
                     <div>
-                        <p className='sign_up'>Don't have an account? <span className='clickable-item' onClick={this.props.handleSignupClicked}>Sign up</span></p>
+                        <p className='sign_up'>Don't have an account? <span className='clickable-item' onClick={this.handleSignupClicked}>Sign up</span></p>
                     </div>
                 </form>
             </div>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    user: state.user
+});
+const mapDispatchToProps = dispatch => ({
+    requestUserAuthentication: bindActionCreators(requestUserAuthentication, dispatch),
+    requestUserRegistration: bindActionCreators(requestUserRegistration, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
