@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { requestUserAuthentication, requestUserRegistration } from '../../Actions/authenticationActions';
 import './style.scss';
 
-export default class Register extends Component {
+class Register extends Component {
 
     constructor(){
         super();
@@ -29,7 +32,11 @@ export default class Register extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.handleRegistrationSubmit(this.state)
+        this.props.requestUserRegistration(this.state)
+    }
+
+    handleSigninClicked = () => {
+        this.props.history.push('/login')
     }
     render() {
         return (
@@ -66,7 +73,7 @@ export default class Register extends Component {
                     <div>
                         <p className='sign_in'>
                             Already have an account? 
-                            <span className='clickable-item' onClick = {this.props.handleSigninClicked}> Sign in</span>
+                            <span className='clickable-item' onClick = {this.handleSigninClicked}> Sign in</span>
                         </p>
                     </div>
                 </form>     
@@ -74,3 +81,11 @@ export default class Register extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    // user: state.user
+});
+const mapDispatchToProps = dispatch => ({
+    requestUserRegistration: bindActionCreators(requestUserRegistration, dispatch)
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

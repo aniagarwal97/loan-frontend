@@ -10,6 +10,12 @@ import UserProfile from '../UserProfile';
 
 
 export default class Layout extends Component {
+
+    componentDidMount(){
+        if (!localStorage.getItem('access_token')){
+            this.props.history.push('/login')
+        }
+    }
     render() {
         return (
             <div style= {{width: '75%', margin:"auto"}}>
