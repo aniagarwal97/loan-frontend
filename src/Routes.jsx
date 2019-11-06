@@ -10,9 +10,9 @@ export default class Routes extends Component {
     render() {
         return (
             <div>
-                <BrowserRouter basename="/app/" />
+                {/* <BrowserRouter basename="/app/" /> */}
                 <Route path="/register" exact = {true} component={Register} />
-                <Route path="/login" exact = {true} component={Login} />
+                <Route path="/app/login" exact = {true} component={Login} />
                 <Route path = "/layout" component = {Layout} />
             </div>
         )
