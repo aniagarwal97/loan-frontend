@@ -5,7 +5,6 @@ import store from './Redux/store';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import './App.scss';
 
 function App() {

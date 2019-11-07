@@ -2,6 +2,7 @@
         display: flex;
         margin: 10px 0;
         justify-content: space-between;
+        align-items: center;
     .logo{
         //flex: 1;
         // height: 30;
@@ -10,10 +11,37 @@
         font-size: 25px;
         font-weight: bold;
     }
+    .opt1{
+        font-size: 13px;
+        padding: 14px 16px;
+        //text-decoration: none;
+
+        :hover{
+            border-bottom: 1px solid rgb(0, 0, 0);
+            background-color: rgb(160, 167, 160);
+            }
+        }
+    
+    .opt2{
+        font-size: 13px;
+        padding: 14px 16px;
+        :hover{
+            border-bottom: 1px solid rgb(0, 0, 0);
+            background-color: rgb(160, 167, 160);
+        }
+    }
+    .opt3{
+        font-size: 13px;
+        padding: 14px 16px;
+        :hover{
+            border-bottom: 1px solid rgb(0, 0, 0);
+            background-color: rgb(160, 167, 160);
+        }
+    }
     .logout{
         //flex: 0.2;
         margin-bottom: 60px;
-        margin-top: 40px;
+        margin-top: 50px;
         font-size: 20px;
         color:  black;
     }

@@ -1,33 +1,12 @@
 import React, { Component } from 'react'
 import { summaryCards } from '../../Utils/Constants';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
 import './styles.scss';
 import CustomMapBox from '../../Components/CustomMapBox';
 import Papa from 'papaparse';
-
-const tableData = [
-    {
-        ndg : '0001',
-        gbv: '€1500',
-        tipo_prestito : 'Retail Secured',
-        granzia: 'S1, €1500',
-        prediction: true
-    },
-    {
-        ndg : '0002',
-        gbv: '€3500',
-        tipo_prestito : 'Retail Unsecured',
-        granzia: 'No',
-        prediction: false
-    },
-    {
-        ndg : '0003',
-        gbv: '€2000',
-        tipo_prestito : 'Corporate Secured',
-        granzia: '€1500',
-        prediction: true
-    },
-]
+import { fecthDashboard } from '../../Actions/dashboardActions'
 
 class Dashboard extends Component {
 
@@ -44,16 +23,17 @@ class Dashboard extends Component {
         })
     }
 
-    handleTableRowClick = () => {
-        this.props.history.push('/layout/profile')
+    handleTableRowClick = (guid) => {
+        localStorage.setItem('selected_user', guid)
+        this.props.history.push('/app/layout/profile')
     }
 
     handleBackButton = () => {
-        this.props.history.push('/layout/upload')
+        this.props.history.push('/app/layout/upload')
     }
 
     exportDashboardData = () => {
-        let csv = Papa.unparse(tableData);
+        let csv = Papa.unparse(this.props.dashboardData);
         var csvData = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
         var csvURL =	null;
         if (navigator.msSaveBlob)
@@ -69,6 +49,10 @@ class Dashboard extends Component {
         tempLink.href = csvURL;
         tempLink.setAttribute('download', 'dashboard_report.csv');
         tempLink.click();
+    }
+
+    componentDidMount() {
+        this.props.fecthDashboard({document_id:localStorage.getItem('selected_dashboard_document')})
     }
     render() {
         return (
@@ -104,13 +88,13 @@ class Dashboard extends Component {
                         </thead>
                         <tbody>
                             {
-                                tableData.map((value, index) => {
+                                this.props.dashboardData && this.props.dashboardData.length && this.props.dashboardData.map((value, index) => {
                                     return (
-                                        <tr style={{ borderBottom: '1px solid #c5bfbf' }} onClick={this.handleTableRowClick}>
+                                        <tr key={index} style={{ borderBottom: '1px solid #c5bfbf' }} onClick={() => this.handleTableRowClick(value.guid)}>
                                             <td>{value.ndg}</td>
-                                            <td>{value.gbv}</td>
-                                            <td>{value.tipo_prestito}</td>
-                                            <td>{value.granzia}</td>
+                                            <td>€{value.gbv}</td>
+                                            <td>{value.type_of_customer}</td>
+                                            <td>{value.garanzia ? value.garanzia : 'No'}</td>
                                     <td>{value.prediction ? <span className='fa fa-check' style={{ color: 'green', border: '2px solid green', padding: 2 }}></span>: <span className='fa fa-times' style={{ color: 'red', border: '2px solid red', padding: '2px 4px' }}></span>}</td>
                                         </tr>
                                     )
@@ -124,5 +108,10 @@ class Dashboard extends Component {
     }
 }
 
-
-export default withRouter(Dashboard)
+const mapStateToProps = state => ({
+    dashboardData : state.dashboardData
+});
+const mapDispatchToProps = dispatch => ({
+    fecthDashboard: bindActionCreators(fecthDashboard, dispatch),
+});
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard))

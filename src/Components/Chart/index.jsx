@@ -1,31 +1,31 @@
-import React, {Component} from 'react'
-import {LineChart, Line,XAxis,YAxis, Tooltip, ReferenceLine} from 'recharts'
+import React, { Component } from 'react'
+import { LineChart, Line, XAxis, YAxis, Tooltip, ReferenceLine } from 'recharts'
 
 const data = [
-  {name: 'Mese 1', amt: -800},
-  {name: 'Mese 2', amt: -600},
-  {name: 'Mese 3', amt: -300},
-  {name: 'Mese 4', amt: -200},
-  {name: 'Mese 5', amt: 400},
-  {name: 'Mese 6', amt: 200},
-  {name: 'Mese 7', amt: 200},
-  {name: 'Mese 8', amt: 500},
-  {name: 'Mese 9', amt: 100},
-  {name: 'Mese 10', amt: -800},
-  {name: 'Mese 11', amt: -900},
-  {name: 'Mese 12', amt: -1000},
-  {name: 'Mese 13', amt: -800},
-  {name: 'Mese 14', amt: -600},
-  {name: 'Mese 15', amt: -300},
-  {name: 'Mese 16', amt: -200},
-  {name: 'Mese 17', amt: 400},
-  {name: 'Mese 18', amt: 200},
-  {name: 'Mese 19', amt: 200},
-  {name: 'Mese 20', amt: 500},
-  {name: 'Mese 21', amt: 100},
-  {name: 'Mese 22', amt: -800},
-  {name: 'Mese 23', amt: -900},
-  {name: 'Mese 24', amt: -1000},
+  { name: 'Mese 1', amt: -800 },
+  { name: 'Mese 2', amt: -600 },
+  { name: 'Mese 3', amt: -300 },
+  { name: 'Mese 4', amt: -200 },
+  { name: 'Mese 5', amt: 400 },
+  { name: 'Mese 6', amt: 200 },
+  { name: 'Mese 7', amt: 200 },
+  { name: 'Mese 8', amt: 500 },
+  { name: 'Mese 9', amt: 100 },
+  { name: 'Mese 10', amt: -800 },
+  { name: 'Mese 11', amt: -900 },
+  { name: 'Mese 12', amt: -1000 },
+  { name: 'Mese 13', amt: -800 },
+  { name: 'Mese 14', amt: -600 },
+  { name: 'Mese 15', amt: -300 },
+  { name: 'Mese 16', amt: -200 },
+  { name: 'Mese 17', amt: 400 },
+  { name: 'Mese 18', amt: 200 },
+  { name: 'Mese 19', amt: 200 },
+  { name: 'Mese 20', amt: 500 },
+  { name: 'Mese 21', amt: 100 },
+  { name: 'Mese 22', amt: -800 },
+  { name: 'Mese 23', amt: -900 },
+  { name: 'Mese 24', amt: -1000 },
 ];
 
 // const CustomizedDot = (props) => {
@@ -48,15 +48,15 @@ const data = [
 //   );
 // };
 
-class Chart extends Component{
-	render () {
-  	return (
-    	<LineChart width={1000} height={200} data={data}>
-        <XAxis dataKey="name"/>
-       <YAxis />
+class Chart extends Component {
+  render() {
+    return (
+      <LineChart width={1000} height={200} data={this.props.chartData}>
+        <XAxis dataKey="name" />
+        <YAxis />
         <Line type='monotone' dataKey='amt' stroke='#8884d8' strokeWidth={2} />
         <ReferenceLine y={0} stroke="red" />
-        <Tooltip/>
+        <Tooltip />
       </LineChart>
     );
   }

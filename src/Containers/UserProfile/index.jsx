@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Chart from '../../Components/Chart';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import './styles.scss';
+import { fetchProfile } from '../../Actions/profileActions';
 
 class UserProfile extends Component {
 
     handleBackButton = () => {
-        this.props.history.push('/layout/dashboard')
+        this.props.history.push('/app/layout/dashboard')
+    }
+
+    componentDidMount(){
+        this.props.fetchProfile({document_id : localStorage.getItem('selected_dashboard_document'), profile_id : localStorage.getItem('selected_user')})
     }
     render() {
+        var chartData = this.props.profileData && this.props.profileData.length && this.props.profileData[0];
+        var finalChart = [];
+        var count = 0;
+        if(chartData){
+            for (var key of Object.keys(chartData)) {
+                if(key.startsWith('m')){
+                    count = count + 1;
+                    finalChart.push({'name' : `Mese ${count}`, 'amt': chartData[key]})
+                }
+            }
+        }
+        
         return (
             <div>
                 <div className='user_container'>
@@ -18,22 +36,20 @@ class UserProfile extends Component {
                 </div>
 
                 <div className='profile'>
-                    {/* <div className='map'>
-                    </div> */}
-                        
                     <div className='cha'>
                         <div className='item1'>
-                                <h6><span>4000</span> out of 5000</h6>
-                                <h6>By 1st of January</h6>
+                                {/* <h6><span>4000</span> out of 5000</h6> */}
+                                {/* <h6>By 1st of January</h6> */}
                         </div>
                         <div className='chart'>
-                            <Chart />
+                            <Chart chartData = {finalChart}/>
                         </div>
                     </div>
                 </div>
             
-                <div>
+                {/* <div>
                     <table className='table' style={{boxShadow: '6px 6px 6px grey'}}>
+                        <thead>
                         <tr>
                             <th>NDG</th>
                             <th>GBV</th>
@@ -41,7 +57,8 @@ class UserProfile extends Component {
                             <th>GRANZIA</th>
                             <th>3 MON PREDICTION</th>
                         </tr>
-
+                        </thead>
+                        <tbody>
                         <tr style={{borderBottom: '1px solid #c5bfbf'}}>
                             <td>0001</td>
                             <td>€1500</td>
@@ -63,12 +80,19 @@ class UserProfile extends Component {
                             <td>€1500</td>
                             <td><span className='fa fa-check' style={{color: 'green'}}></span></td>
                         </tr>
+                        </tbody>
                     </table>
-                </div>
+                </div> */}
             </div>
         )
     }
 }
 
+const mapStateToProps = state => ({
+    profileData : state.profileData
+});
+const mapDispatchToProps = dispatch => ({
+    fetchProfile: bindActionCreators(fetchProfile, dispatch),
+});
 
-export default withRouter(UserProfile)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserProfile))
