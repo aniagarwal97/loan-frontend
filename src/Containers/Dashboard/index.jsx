@@ -55,6 +55,16 @@ class Dashboard extends Component {
         this.props.fecthDashboard({document_id:localStorage.getItem('selected_dashboard_document')})
     }
     render() {
+        const { portfolio_value, secured_corporate, secured_retail, success, total_loan, unsecured_corporate, unsecured_retail } = this.props.dashboardData;
+        const summaryCards = [
+            { title: "Total Portfolio Value", key: 1, value: `€ ${portfolio_value || 0}`, class : "" },
+            { title: "Number of Loans", key: 2, value: total_loan || 0, class : "" },
+            { title: "Retail Loans", key: 3, value: secured_retail + unsecured_retail || 0, class : "" },
+            { title: "Corporate Loans", key: 4, value: secured_corporate + unsecured_corporate || 0, class : "" },
+            { title: "Good Loans", key: 5, value: secured_retail + secured_corporate || 0, class : "green-loan" },
+            { title: "At risk Loans", key: 6, value: unsecured_retail + unsecured_corporate || 0, class : "red-loan" }
+        ];
+        
         return (
             <div style={{marginBottom: 20}}>
                 <span className='fa fa-arrow-left fa-2x custom_icon clickable-item' title = 'Go back to Uploads' onClick = {this.handleBackButton}></span>
@@ -88,7 +98,7 @@ class Dashboard extends Component {
                         </thead>
                         <tbody>
                             {
-                                this.props.dashboardData && this.props.dashboardData.length && this.props.dashboardData.map((value, index) => {
+                                this.props.dashboardData && this.props.dashboardData.dashboard && this.props.dashboardData.dashboard.length && this.props.dashboardData.dashboard.map((value, index) => {
                                     return (
                                         <tr key={index} style={{ borderBottom: '1px solid #c5bfbf' }} onClick={() => this.handleTableRowClick(value.guid)}>
                                             <td>{value.ndg}</td>
@@ -99,6 +109,8 @@ class Dashboard extends Component {
                                         </tr>
                                     )
                                 })
+                                ||
+                                <tr></tr>
                             }
                         </tbody>
                     </table>

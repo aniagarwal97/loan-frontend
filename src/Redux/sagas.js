@@ -29,10 +29,9 @@ function* loginSaga(action) {
 function* registrationSaga(action){
   try {
     const apiResponse = yield call(registrationApi, action.payload);
-    if (apiResponse.data) {
-      apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
-      yield put(successUserAuthentication(apiResponse.data));
-      toast.success('User Registered successfully')
+    // console.log(apiResponse)
+    if (apiResponse.data.success) {
+      toast.success('User Registered successfully');
     }
   } catch (e) {
     console.log(e)
@@ -140,7 +139,7 @@ function* fecthDashboardSaga(action){
     const apiResponse = yield call(fetchDashboardData, token, action.payload);
     if (apiResponse.data.success) {
       console.log(apiResponse.data)
-      yield put(successFetchDashboard(apiResponse.data.dashboard))
+      yield put(successFetchDashboard(apiResponse.data))
     }
   } catch (e) {
     console.log(e)

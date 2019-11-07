@@ -7,9 +7,11 @@ import './style.scss';
 
 class Upload extends Component {
 
-    handleDocumentClick = (guid) => {
-        this.props.history.push('/app/layout/dashboard')
-        localStorage.setItem('selected_dashboard_document', guid)
+    handleDocumentClick = (guid, is_Analysed) => {
+        if(is_Analysed){
+            this.props.history.push('/app/layout/dashboard')
+            localStorage.setItem('selected_dashboard_document', guid)
+        }
     }
 
     componentDidMount = () => {
@@ -41,7 +43,7 @@ class Upload extends Component {
                 {
                     (this.props.documents && this.props.documents.documents && this.props.documents.documents.length) ? this.props.documents.documents.map((value, index) => {
                         return (
-                            <div className='uploaded_files clickable-item' key={index} onClick={() => this.handleDocumentClick(value.guid)}>
+                            <div className={`uploaded_files ${value.is_Analysed ? 'clickable-item' : ''}`} key={index} onClick={() => this.handleDocumentClick(value.guid, value.is_Analysed)}>
                                 <div className='extension'>{value.document_name.split(".")[value.document_name.split(".").length - 1]}</div>
                                 <div className='uploaded_doc'>{value.document_name}</div>
                                 <div className='uploaded_time'>{value.created_at.split(" ")[0]}</div>
