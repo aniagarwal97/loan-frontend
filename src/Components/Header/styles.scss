@@ -17,22 +17,25 @@
         //text-decoration: none;
 
         :hover{
-            border-bottom: 1px solid rgb(29, 27, 27);
-            text-decoration: none;
+            border-bottom: 1px solid rgb(0, 0, 0);
+            background-color: rgb(160, 167, 160);
+            }
         }
-    }
+    
     .opt2{
         font-size: 13px;
         padding: 14px 16px;
         :hover{
-            border-bottom: 1px solid rgb(29, 27, 27);
+            border-bottom: 1px solid rgb(0, 0, 0);
+            background-color: rgb(160, 167, 160);
         }
     }
     .opt3{
         font-size: 13px;
         padding: 14px 16px;
         :hover{
-            border-bottom: 1px solid rgb(29, 27, 27);
+            border-bottom: 1px solid rgb(0, 0, 0);
+            background-color: rgb(160, 167, 160);
         }
     }
     .logout{

@@ -55,14 +55,14 @@ class Dashboard extends Component {
         this.props.fecthDashboard({document_id:localStorage.getItem('selected_dashboard_document')})
     }
     render() {
-        const { portfolio_value, secured_corporate, secured_retail, success, total_loan, unsecured_corporate, unsecured_retail } = this.props.dashboardData;
+        const { portfolio_value, secured_corporate, secured_retail, total_loan, unsecured_corporate, unsecured_retail, good_loan, bad_loan } = this.props.dashboardData;
         const summaryCards = [
             { title: "Total Portfolio Value", key: 1, value: `€ ${portfolio_value || 0}`, class : "" },
             { title: "Number of Loans", key: 2, value: total_loan || 0, class : "" },
             { title: "Retail Loans", key: 3, value: secured_retail + unsecured_retail || 0, class : "" },
             { title: "Corporate Loans", key: 4, value: secured_corporate + unsecured_corporate || 0, class : "" },
-            { title: "Good Loans", key: 5, value: secured_retail + secured_corporate || 0, class : "green-loan" },
-            { title: "At risk Loans", key: 6, value: unsecured_retail + unsecured_corporate || 0, class : "red-loan" }
+            { title: "Good Loans", key: 5, value: good_loan || 0, class : "green-loan" },
+            { title: "At risk Loans", key: 6, value: bad_loan || 0, class : "red-loan" }
         ];
         
         return (
@@ -104,7 +104,7 @@ class Dashboard extends Component {
                                             <td>{value.ndg}</td>
                                             <td>€{value.gbv}</td>
                                             <td>{value.type_of_customer}</td>
-                                            <td>{value.garanzia ? value.garanzia : 'No'}</td>
+                                            <td>€{value.garanzia ? value.garanzia : 'No'}</td>
                                     <td>{value.prediction ? <span className='fa fa-check' style={{ color: 'green', border: '2px solid green', padding: 2 }}></span>: <span className='fa fa-times' style={{ color: 'red', border: '2px solid red', padding: '2px 4px' }}></span>}</td>
                                         </tr>
                                     )
