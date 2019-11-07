@@ -8,6 +8,7 @@
         //color: #9a55ff;
         margin: 30px;
         font-size: 107px;
+        font-weight: 500;
         //box-shadow: 5px 5px 8px grey;
     }
     .input_borders{
@@ -24,7 +25,7 @@
         box-shadow: 5px 5px 8px grey;
         .custom_icon{
             margin-left: 10px;
-            color:  #9a55ff;
+            color:  #00008b;
             margin-top: 16px;
         }            
     }
@@ -53,10 +54,16 @@
             box-shadow: 5px 5px 8px grey;
             cursor: pointer;
             color: #ffffff;
-            background: linear-gradient(to right, #da8cff, #9a55ff);
+            //background: linear-gradient(to right, #6aa0e7, #00008b);
+            background: #0038E3;
             font-family: "ubuntu-bold",sans-serif;
-            font-size: 1.3rem;     
-            font-weight: 900;   
+            //font-size: 1.3rem;
+            font-size: 14px;     
+            font-weight: 900;
+            //font-weight: 500;  
+            &:hover{
+                transform: translateY(-3px);
+            } 
             }
         }
 }
@@ -65,7 +72,7 @@
         color: #999999;
         font-size: 20px;
         .clickable-item{
-            color: #9a55ff;
+            color: #00008b;
         }
 }         
 
