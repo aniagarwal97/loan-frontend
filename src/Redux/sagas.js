@@ -16,8 +16,8 @@ import { successFetchProfile } from '../Actions/profileActions';
 function* loginSaga(action) {
   try {
     const apiResponse = yield call(login, action.payload);
-    console.log(apiResponse)
     if (apiResponse.data) {
+      apiResponse.data.is_Admin && localStorage.setItem('is_admin', apiResponse.data.is_Admin)
       apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
       yield put(successUserAuthentication(apiResponse.data));
     }
@@ -29,7 +29,6 @@ function* loginSaga(action) {
 function* registrationSaga(action){
   try {
     const apiResponse = yield call(registrationApi, action.payload);
-    // console.log(apiResponse)
     if (apiResponse.data.success) {
       toast.success('User Registered successfully');
     }
@@ -55,7 +54,11 @@ function* uploadDocumentSaga(action) {
     var token = localStorage.getItem('access_token')
     const apiResponse = yield call(uploadDocumentApi, token, action.payload);
     if (apiResponse.data.success) {
+      toast.success('Your file has been uploaded for Analysis purpose')
       yield put(fetchDocuments())
+    }
+    else{
+      toast.error('Something went wrong, please try again')
     }
   } catch (e) {
     console.log(e)
@@ -138,7 +141,6 @@ function* fecthDashboardSaga(action){
     var token = localStorage.getItem('access_token')
     const apiResponse = yield call(fetchDashboardData, token, action.payload);
     if (apiResponse.data.success) {
-      console.log(apiResponse.data)
       yield put(successFetchDashboard(apiResponse.data))
     }
   } catch (e) {
