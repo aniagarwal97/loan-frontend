@@ -134,7 +134,7 @@ class Header extends Component {
         const isUserAdmin = localStorage.getItem('is_admin')
         return (
             <div className='header'>
-                <div className='logo clickable-item'>
+                <div className='logo clickable-item' onClick={()=>{this.props.history.push('/app/layout/upload')}}>
                     <Logo />
                 </div>
                 {isUserAdmin && <div className='opt1'><span><Link style={{color:'black', textDecoration:'none'}} to="/app/layout/user-approval">User Approval</Link></span></div>}
