@@ -6,7 +6,8 @@
     .sign_up{
         color: black;
         margin: 30px;
-        font-size: 80px;
+        font-size: 107px;
+        font-weight: 500;
     }
     .input_borders{
         display: flex;
@@ -22,7 +23,7 @@
         .custom_icon{
             margin-left:15px; 
             margin-top: 17px;
-            color: #9a55ff;
+            color: #00008b;
             }
         } 
               
@@ -55,11 +56,14 @@
             box-shadow: 5px 5px 8px grey;
             cursor: pointer;
             color: #ffffff;
-            background: linear-gradient(to right, #da8cff, #9a55ff);
+            background: #0038E3;
             font-family: "ubuntu-bold",sans-serif;
-            font-size: 1.3rem;     
+            font-size: 14px;     
             font-weight: 900;
             //box-shadow: 5px 5px 8px grey
+            &:hover{
+                transform: translateY(-3px);
+            }
         }
     } 
     .sign_in{
@@ -67,7 +71,7 @@
         color: #999999;
         font-size: 20px;
         .clickable-item{
-            color: #9a55ff;
+            color: #00008b;
         }
              }               
 }
