@@ -14,7 +14,7 @@ export default class Layout extends Component {
 
     componentDidMount(){
         if (!localStorage.getItem('access_token')){
-            this.props.history.push('/app/app/login')
+            this.props.history.push('/app/login')
         }
     }
     render() {

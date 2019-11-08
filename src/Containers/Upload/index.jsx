@@ -26,7 +26,7 @@ class Upload extends Component {
     render() {
         return (
             <div style={{ margin: '34px 0' }}>
-                <div className='upload_container'>
+                <div className='upload_container' style={{marginBottom: 80}}>
                     <label>
                         <div className='uploader'>
                             <span className="fa fa-upload custom_upload_icon"></span>
@@ -34,25 +34,31 @@ class Upload extends Component {
                             <div className='upload_doc'><u>Upload Documents</u></div>
                         </div>
                     </label>
-
                 </div>
-                <div className='upload_files_head'>
-                    <div className='upload_doc'>UPLOADED DOCUMENTS</div>
-                    <div className='upload_time'>CREATION DATE</div>
-                </div>
-                {
-                    (this.props.documents && this.props.documents.documents && this.props.documents.documents.length) ? this.props.documents.documents.map((value, index) => {
-                        return (
-                            <div className={`uploaded_files ${value.is_Analysed ? 'clickable-item' : ''}`} key={index} onClick={() => this.handleDocumentClick(value.guid, value.is_Analysed)}>
-                                <div className='extension'>{value.document_name.split(".")[value.document_name.split(".").length - 1]}</div>
-                                <div className='uploaded_doc'>{value.document_name}</div>
-                                <div className='uploaded_time'>{value.created_at.split(" ")[0]}</div>
-                            </div>
-                        )
-                    })
-                        :
-                        <div>You have not uploaded any document. Please upload some from the top</div>
-                }
+                <table >
+                    <thead>
+                        <tr >
+                            <th>UPLOADED DOCUMENTS</th>
+                            <th>CREATION DATE</th>
+                            <th>ANALYSIS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            (this.props.documents && this.props.documents.documents && this.props.documents.documents.length) ? this.props.documents.documents.map((value, index) => {
+                                return (
+                                    <tr className={`uploaded_files ${value.is_Analysed ? 'clickable-item' : ''}`} key={index} onClick={() => this.handleDocumentClick(value.guid, value.is_Analysed)}>
+                                        <td><span className='extension'>{value.document_name.split(".")[value.document_name.split(".").length - 1]}</span><div style={{marginTop: 11}}>{value.document_name}</div></td>
+                                        <td>{value.created_at.split(" ")[0]}</td>
+                                        <td>{value.is_Analysed ? <div>Done</div> : <div title='Analysis might take upto 72 hours'>In Progress</div>}</td>
+                                    </tr>
+                                )
+                            })
+                                :
+                                <tr>You have not uploaded any document. Please upload some from the top</tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         )
     }
