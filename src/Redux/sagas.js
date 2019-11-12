@@ -1,5 +1,4 @@
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
-//import { select } from 'redux-saga';
 import * as types from '../Utils/actionTypes';
 import {
   login, registrationApi, fetchDocumentApi, uploadDocumentApi, fetchInactiveUsersAPI, 
@@ -32,6 +31,7 @@ function* registrationSaga(action){
     const apiResponse = yield call(registrationApi, action.payload);
     if (apiResponse.data.success) {
       toast.success('User registered successfully, We will review your account and notify you of approval within 24 hours');
+      window.location.href = '/app/login';
     }
     else{
       toast.error(apiResponse.data.message)
