@@ -13,10 +13,9 @@
         .uploader{
             display: inline-block;
             padding: 65px;
-            border: dashed 5px;
+            border: dashed 2px;
             border-image-slice: 2;
             border-image-repeat: round;  
-            border-image-source:url("../../Assets/border.png");
             width:80%;
             height:50%;
             input {

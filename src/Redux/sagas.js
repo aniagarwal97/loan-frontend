@@ -12,6 +12,7 @@ import { successFetchInactiveUsers, fetchInactiveUsers } from '../Actions/UserAp
 import { toast } from 'react-toastify';
 import { successFetchDashboard } from '../Actions/dashboardActions';
 import { successFetchProfile } from '../Actions/profileActions';
+import { showLoader, hideLoader } from '../Actions/loderActions';
 
 function* loginSaga(action) {
   try {
@@ -30,7 +31,10 @@ function* registrationSaga(action){
   try {
     const apiResponse = yield call(registrationApi, action.payload);
     if (apiResponse.data.success) {
-      toast.success('User Registered successfully');
+      toast.success('User registered successfully, We will review your account and notify you of approval within 24 hours');
+    }
+    else{
+      toast.error(apiResponse.data.message)
     }
   } catch (e) {
     console.log(e)
@@ -52,7 +56,9 @@ function* fetchDocumentsSaga(action){
 function* uploadDocumentSaga(action) {
   try {
     var token = localStorage.getItem('access_token')
+    yield put(showLoader())
     const apiResponse = yield call(uploadDocumentApi, token, action.payload);
+    yield put(hideLoader())
     if (apiResponse.data.success) {
       toast.success('Your file has been uploaded for Analysis purpose')
       yield put(fetchDocuments())
@@ -61,6 +67,8 @@ function* uploadDocumentSaga(action) {
       toast.error('Something went wrong, please try again')
     }
   } catch (e) {
+    yield put(hideLoader())
+    toast.error('Something went wrong')
     console.log(e)
   }
 }
@@ -126,13 +134,16 @@ function* uploadAnalysisSaga(action){
     var token = localStorage.getItem('access_token')
     var document_id = localStorage.getItem('adminCurrentDocument')
     var finalPayload = Object.assign(action.payload, {document_id : document_id})
+    yield put(showLoader())
     const apiResponse = yield call(uploadAnalysisReport, token, finalPayload);
+    yield put(hideLoader())
     if (apiResponse.data.success) {
-      toast.success('Report Uploaded successfully')
-      yield put(successFetchAllDocuments(apiResponse.data.documents))
+      toast.success(apiResponse.data.message)
     }
   } catch (e) {
     console.log(e)
+    yield put(hideLoader())
+    toast.error('Something went wrong')
   }
 }
 
