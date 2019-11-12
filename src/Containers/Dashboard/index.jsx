@@ -13,7 +13,10 @@ class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
-            currentTab: 1
+            currentTab: 1,
+            currentSort : '',
+            userList : [],
+            sortOrder: ''
         }
         this.emitChangeDebounced = debounce(this.emitChange, 550);
     }
@@ -65,6 +68,91 @@ class Dashboard extends Component {
     handleChange = event => {
         this.emitChangeDebounced(event.target.value);
     };
+
+    static getDerivedStateFromProps(props, state){
+        Object.assign(state, {
+            userList: props.dashboardData.dashboard
+        })
+        return state
+    }
+
+    handleSort = (type, isNumber) => {
+        var data;
+        if (isNumber) {
+            if (this.state.currentSort === type) {
+                if (this.state.sortOrder === '' || this.state.sortOrder === 'desc') {
+                    data = this.props.dashboardData.dashboard.sort(function (a, b) {
+                        return a[type] - b[type];
+                    }
+                    );
+                    this.setState({
+                        userList: data,
+                        sortOrder: 'asc',
+                        currentSort: type
+                    })
+                }
+                else {
+                    data = this.props.dashboardData.dashboard.sort(function (a, b) {
+                        return b[type] - a[type];
+                    }
+                    );
+                    this.setState({
+                        userList: data,
+                        sortOrder: 'desc',
+                        currentSort: type
+                    })
+                }
+            }
+            else {
+                data = this.props.dashboardData.dashboard.sort(function (a, b) {
+                    return a[type] - b[type];
+                }
+                );
+                this.setState({
+                    userList: data,
+                    sortOrder: 'asc',
+                    currentSort: type
+                })
+            }
+        }
+        else{
+            if (this.state.currentSort === type) {
+                if (this.state.sortOrder === '' || this.state.sortOrder === 'desc') {
+                    data = this.props.dashboardData.dashboard.sort(function (a, b) {
+                        return a[type].localeCompare(b[type]);
+                    }
+                    );
+                    this.setState({
+                        userList: data,
+                        sortOrder: 'asc',
+                        currentSort: type
+                    })
+                }
+                else {
+                    data = this.props.dashboardData.dashboard.sort(function (a, b) {
+                        return b[type].localeCompare(a[type]);
+                    }
+                    );
+                    this.setState({
+                        userList: data,
+                        sortOrder: 'desc',
+                        currentSort: type
+                    })
+                }
+            }
+            else {
+                data = this.props.dashboardData.dashboard.sort(function (a, b) {
+                    return a[type].localeCompare(b[type]);
+                }
+                );
+                this.setState({
+                    userList: data,
+                    sortOrder: 'asc',
+                    currentSort: type
+                })
+            }
+        }
+    }
     render() {
         const { portfolio_value, secured_corporate, secured_retail, total_loan, unsecured_corporate, unsecured_retail, good_loan, bad_loan } = this.props.dashboardData;
         const summaryCards = [
@@ -100,16 +188,16 @@ class Dashboard extends Component {
                     <table className='table clickable-item' style={{ boxShadow: '6px 6px 6px grey' }}>
                         <thead>
                             <tr style={{ borderBottom: '1px solid #cec9c9' }}>
-                                <th>NDG</th>
-                                <th>GBV</th>
-                                <th>TIPO PRESTITO</th>
-                                <th>GARANZIA</th>
-                                <th>3 MON PREDICTION</th>
+                    <th onClick={() => {this.handleSort('ndg', false)}}>NDG {this.state.currentSort === 'ndg' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
+                                <th onClick={() => {this.handleSort('gbv', true)}}>GBV {this.state.currentSort === 'gbv' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
+                                <th onClick={() => {this.handleSort('type_of_customer', false)}}>TIPO PRESTITO {this.state.currentSort === 'type_of_customer' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
+                                <th onClick={() => {this.handleSort('garanzia', false)}}>GARANZIA {this.state.currentSort === 'garanzia' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
+                                <th onClick={() => {this.handleSort('prediction', true)}}>3 MON PREDICTION {this.state.currentSort === 'prediction' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                this.props.dashboardData && this.props.dashboardData.dashboard && this.props.dashboardData.dashboard.length && this.props.dashboardData.dashboard.map((value, index) => {
+                                this.state.userList && this.state.userList.length && this.state.userList.map((value, index) => {
                                     return (
                                         <tr key={index} style={{ borderBottom: '1px solid #c5bfbf' }} onClick={() => this.handleTableRowClick(value.guid)}>
                                             <td>{value.ndg}</td>
