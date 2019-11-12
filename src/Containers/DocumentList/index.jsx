@@ -37,7 +37,7 @@ class DocumentList extends Component {
                                 )
                             })
                             ||
-                            <tr>You have not uploaded any document. Please upload some from the top</tr>
+                            <tr><td>There are no pending documents requiring approval</td></tr>
                         }
                     </tbody>
                 </table>

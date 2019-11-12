@@ -7,6 +7,13 @@ import './style.scss';
 
 class Upload extends Component {
 
+    constructor(){
+        super();
+        this.state = {
+            fileValue : 'FileName'
+        }
+        this.fileInput = {}
+    }
     handleDocumentClick = (guid, is_Analysed) => {
         if(is_Analysed){
             this.props.history.push('/app/layout/dashboard')
@@ -22,6 +29,7 @@ class Upload extends Component {
         const data = new FormData()
         data.append('document', event.target.files[0])
         this.props.uploadDocument(data)
+        this.fileInput.value = "";
     }
     render() {
         return (
@@ -30,7 +38,7 @@ class Upload extends Component {
                     <label>
                         <div className='uploader'>
                             <span className="fa fa-upload custom_upload_icon"></span>
-                            <input className='upload_files' type="file" name="file" onChange={this.handleFile} />
+                            <input className='upload_files' type="file" name="file" onChange={this.handleFile} ref={ref=> this.fileInput = ref}/>
                             <div className='upload_doc'><u>Upload Documents</u></div>
                         </div>
                     </label>

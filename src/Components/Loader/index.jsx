@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const LoaderImage = () => (
     <svg width='200px' height='200px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" className="uil-default">
-        <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+        <rect x="0" y="0" width="100" height="100" fill="none" className="bk"></rect>
         <rect x='46.5' y='40' width='7' height='20' rx='5' ry='5' fill='#000000' transform='rotate(0 50 50) translate(0 -30)'>
             <animate attributeName='opacity' from='1' to='0' dur='1s' begin='0s' repeatCount='indefinite' />
         </rect>
