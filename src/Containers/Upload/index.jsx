@@ -55,7 +55,7 @@ class Upload extends Component {
                                 )
                             })
                                 :
-                                <tr>You have not uploaded any document. Please upload some from the top</tr>
+                                <tr><td>You have not uploaded any document. Please upload some from the top</td></tr>
                         }
                     </tbody>
                 </table>

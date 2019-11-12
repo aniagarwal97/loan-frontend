@@ -16,12 +16,14 @@ import { showLoader, hideLoader } from '../Actions/loderActions';
 function* loginSaga(action) {
   try {
     const apiResponse = yield call(login, action.payload);
-    if (apiResponse.data) {
+    if (apiResponse.data.success) {
       apiResponse.data.is_Admin && localStorage.setItem('is_admin', apiResponse.data.is_Admin)
       apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
       yield put(successUserAuthentication(apiResponse.data));
+      toast.success('Howdy! Welcome Back')
     }
   } catch (e) {
+    toast.error('Oops! could not login')
     console.log(e)
   }
 }

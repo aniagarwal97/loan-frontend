@@ -38,7 +38,7 @@ class Dashboard extends Component {
     }
 
     exportDashboardData = () => {
-        let csv = Papa.unparse(this.props.dashboardData);
+        let csv = Papa.unparse(this.state.userList);
         var csvData = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
         var csvURL = null;
         if (navigator.msSaveBlob) {
