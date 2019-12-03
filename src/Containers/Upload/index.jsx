@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchDocuments, uploadDocument } from '../../Actions/documentActions';
+import ProcessImage from '../../Assets/processes.png'
 import './style.scss';
 
 class Upload extends Component {
@@ -34,6 +35,7 @@ class Upload extends Component {
     render() {
         return (
             <div style={{ margin: '34px 0' }}>
+                <img src={ProcessImage}  style={{width: '100%', marginBottom: 30, height: '10%'}}/>
                 <div className='upload_container' style={{marginBottom: 80}}>
                     <label>
                         <div className='uploader'>

@@ -26,7 +26,7 @@ export default class CustomMapBox extends Component {
                                     key = {index}
                                     coordinates={[value.longitude, value.latitude]}
                                     anchor="bottom">
-                                    <div style={{ width: 3, height: 3, border: '3px solid', borderColor: (value.prediction ? 'green' : 'red'), borderRadius: '25px' }}> </div>
+                                    <div style={{ width: 8, height: 8, background: (value.prediction ? 'green' : 'red'), borderRadius: '25px' }}> </div>
                                 </Marker>
                             )
                         })
