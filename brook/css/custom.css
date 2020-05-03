@@ -1,9 +1,106 @@
-/*********************************************************************************
+.header-default.header-transparent #logo-white{
+	display: none;
+}
 
-	Template Name: Template Full Name Here
-	Description: A perfect template to build beautiful and unique medical websites. It comes with nice and clean design.
-	Version: 1.0
+.header-default.header-transparent #logo-transparent{
+	display: block;
+}
 
-	Note: This is custom css.
+.header-default.header-transparent .page_nav ul.mainmenu li a{
+	color: black;
+}
 
-**********************************************************************************/
+.headroom--sticky.headroom--not-top #logo-transparent{
+	display: none;
+}
+
+.headroom--sticky.headroom--not-top #logo-white{
+	display: block;
+}
+
+.header-default.light-logo--version.headroom--sticky.headroom--not-top .page_nav ul.mainmenu li a{
+	color: white;
+}
+
+.nav-masthead .banner-image{
+	background: url('../img/banner/1.jpg'); 
+	max-height: 623px; 
+	height: 100vh;
+}
+
+.nav-masthead .banner-content{
+	text-align: center;
+    padding-top: 130px;
+}
+
+.nav-masthead .banner-content .banner-image-container {
+	width: 450px; 
+	height: auto; 
+	margin: auto;
+}
+
+.nav-masthead .banner-content .banner-subheading{
+	font-size: 24px;
+    margin: 30px 80px 0 80px;
+    line-height: 40px;
+}
+
+.nav-masthead .banner-content .signin-container{
+	width: fit-content;
+	font-weight: bold;
+    margin: auto;
+    font-size: 20px;
+    border: 1px solid;
+    padding: 5px 10px;
+    margin-top: 24px;
+    border-radius: 6px;
+	cursor: pointer;
+}
+
+.nav-masthead .banner-content .signin-container:hover{
+	opacity: 0.7;
+}
+
+.zt-products-area .icons i{
+	color: #0038E3;
+    font-size: 80px;
+}
+
+.zt-products-area .overlay{
+	display: none;
+	background-color: #50c6dacf;
+	position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.product-item, .overlay{
+	color: white;
+}
+.zt-products-area .overlay h3{
+	margin-top: 20px;
+	color: white;
+	font-weight: bold;
+	font-size: 28px;
+	line-height: 45px;
+	padding: 0 35px;
+}
+.zt-products-area .overlay ul {
+	list-style-type: none;
+	cursor: pointer;
+	padding: 0;
+	color: white;
+	font-weight: bold;
+	margin-top: 50px;
+	font-size: 28px;
+	line-height: 45px;
+}
+
+.product-item:hover + .overlay{
+	display: block;
+}
+
+.overlay:hover{
+	display: block;
+}
