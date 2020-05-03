@@ -13,8 +13,8 @@ import UserList from '../UserList';
 export default class Layout extends Component {
 
     componentDidMount(){
-        if (!localStorage.getItem('access_token')){
-            this.props.history.push('/app/app/login')
+        if (!sessionStorage.getItem('access_token')){
+            this.props.history.push('/app/login')
         }
     }
     render() {
@@ -27,7 +27,7 @@ export default class Layout extends Component {
                 <Route path = "/app/layout/document-list" exact = {true} component = {DocumentList} />
                 <Route path = "/app/layout/dashboard" exact = {true} component = {Dashboard} />
                 <Route path = "/app/layout/profile" exact = {true} component = {UserProfile} />
-                <Route path = "/app/layout/user-list" exact = {true} component = {UserList} />
+                {/* <Route path = "/app/layout/user-list" exact = {true} component = {UserList} /> */}
             </div>
         )
     }

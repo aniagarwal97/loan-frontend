@@ -13,42 +13,24 @@ export default class CustomMapBox extends Component {
                 <Map
                     style="mapbox://styles/mapbox/streets-v9"
                     containerStyle={{
-                        height: '283px',
-                        width: '507px',
+                        height: '330px',
+                        width: '100%',
                         //border: '1px solid grey'
                     }}
                     center={[9.1900, 45.4642]}
                 >
-                    <Marker
-                        coordinates={[10.8719, 0.309719]}
-                        anchor="bottom">
-                        <div style={{ width: 3, height: 3, border: '3px solid red', borderRadius: '25px' }}> </div>
-                    </Marker>
-                    <Marker
-                        coordinates={[15.030449, 2.309719]}
-                        anchor="bottom">
-                        <div style={{ width: 3, height: 3, border: '3px solid red', borderRadius: '25px' }}> </div>
-                    </Marker>
-                    <Marker
-                        coordinates={[20.030449, 4.309719]}
-                        anchor="bottom">
-                        <div style={{ width: 3, height: 3, border: '3px solid red', borderRadius: '25px' }}> </div>
-                    </Marker>
-                    <Marker
-                        coordinates={[25.030449, 6.309719]}
-                        anchor="bottom">
-                        <div style={{ width: 3, height: 3, border: '3px solid green', borderRadius: '25px' }}> </div>
-                    </Marker>
-                    <Marker
-                        coordinates={[-0.481747846041145, 49.3233379650232]}
-                        anchor="bottom">
-                        <div style={{ width: 3, height: 3, border: '3px solid green', borderRadius: '25px' }}> </div>
-                    </Marker>
-                    <Marker
-                        coordinates={[-0.481747846041145, 52.3233379650232]}
-                        anchor="bottom">
-                        <div style={{ width: 3, height: 3, border: '3px solid red', borderRadius: '25px' }}> </div>
-                    </Marker>
+                    {
+                        this.props.mapData && this.props.mapData.length && this.props.mapData.map((value, index) => {
+                            return (
+                                <Marker
+                                    key = {index}
+                                    coordinates={[value.longitude, value.latitude]}
+                                    anchor="bottom">
+                                    <div style={{ width: 8, height: 8, background: (value.prediction ? 'green' : 'red'), borderRadius: '25px' }}> </div>
+                                </Marker>
+                            )
+                        })
+                    }
                     <Layer
                         type="symbol"
                         layout={{ "icon-image": "harbor-15" }}>

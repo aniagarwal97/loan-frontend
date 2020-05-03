@@ -7,7 +7,7 @@ const initialState = {
 const dashboardReducer = (state = initialState, action) => {
     switch (action.type) {
         case DASHBORD_ACTIONS.SUCCESS_FETCH_DASHBOARD:
-            return [...action.payload];
+            return {...action.payload};
         default:
             return state;
     }

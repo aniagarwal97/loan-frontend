@@ -1,5 +1,4 @@
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
-//import { select } from 'redux-saga';
 import * as types from '../Utils/actionTypes';
 import {
   login, registrationApi, fetchDocumentApi, uploadDocumentApi, fetchInactiveUsersAPI, 
@@ -12,16 +11,19 @@ import { successFetchInactiveUsers, fetchInactiveUsers } from '../Actions/UserAp
 import { toast } from 'react-toastify';
 import { successFetchDashboard } from '../Actions/dashboardActions';
 import { successFetchProfile } from '../Actions/profileActions';
+import { showLoader, hideLoader } from '../Actions/loderActions';
 
 function* loginSaga(action) {
   try {
     const apiResponse = yield call(login, action.payload);
-    console.log(apiResponse)
-    if (apiResponse.data) {
-      apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
+    if (apiResponse.data.success) {
+      apiResponse.data.is_Admin && sessionStorage.setItem('is_admin', apiResponse.data.is_Admin)
+      apiResponse.data.access_token && sessionStorage.setItem('access_token', apiResponse.data.access_token)
       yield put(successUserAuthentication(apiResponse.data));
+      toast.success('Howdy! Welcome Back')
     }
   } catch (e) {
+    toast.error('Oops! could not login')
     console.log(e)
   }
 }
@@ -29,10 +31,12 @@ function* loginSaga(action) {
 function* registrationSaga(action){
   try {
     const apiResponse = yield call(registrationApi, action.payload);
-    if (apiResponse.data) {
-      apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
-      yield put(successUserAuthentication(apiResponse.data));
-      toast.success('User Registered successfully')
+    if (apiResponse.data.success) {
+      toast.success('User registered successfully, We will review your account and notify you of approval within 24 hours');
+      window.location.href = '/app/login';
+    }
+    else{
+      toast.error(apiResponse.data.message)
     }
   } catch (e) {
     console.log(e)
@@ -41,7 +45,7 @@ function* registrationSaga(action){
 
 function* fetchDocumentsSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchDocumentApi, token);
     if (apiResponse.data.success) {
       yield put(successFetchDocuments(apiResponse.data))
@@ -53,19 +57,27 @@ function* fetchDocumentsSaga(action){
 
 function* uploadDocumentSaga(action) {
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
+    yield put(showLoader())
     const apiResponse = yield call(uploadDocumentApi, token, action.payload);
+    yield put(hideLoader())
     if (apiResponse.data.success) {
+      toast.success('Your file has been uploaded for Analysis purpose')
       yield put(fetchDocuments())
     }
+    else{
+      toast.error('Something went wrong, please try again')
+    }
   } catch (e) {
+    yield put(hideLoader())
+    toast.error('Something went wrong')
     console.log(e)
   }
 }
 
 function* fetchInactiveUsersSaga(){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchInactiveUsersAPI, token);
     if (apiResponse.data.success) {
       yield put(successFetchInactiveUsers(apiResponse.data.users))
@@ -77,7 +89,7 @@ function* fetchInactiveUsersSaga(){
 
 function* approveUserSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(approveUserApi, token, action.payload);
     if (apiResponse.data.success) {
       toast.success(apiResponse.data.message)
@@ -93,7 +105,7 @@ function* approveUserSaga(action){
 
 function* rejectUserSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(rejectUserApi, token, action.payload);
     if (apiResponse.data.success) {
       toast.success(apiResponse.data.message)
@@ -109,7 +121,7 @@ function* rejectUserSaga(action){
 
 function* fetchAllDocumentsSaga(){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchAllDocumentsApi, token);
     if (apiResponse.data.success) {
       yield put(successFetchAllDocuments(apiResponse.data.documents))
@@ -121,26 +133,28 @@ function* fetchAllDocumentsSaga(){
 
 function* uploadAnalysisSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
-    var document_id = localStorage.getItem('adminCurrentDocument')
+    var token = sessionStorage.getItem('access_token')
+    var document_id = sessionStorage.getItem('adminCurrentDocument')
     var finalPayload = Object.assign(action.payload, {document_id : document_id})
+    yield put(showLoader())
     const apiResponse = yield call(uploadAnalysisReport, token, finalPayload);
+    yield put(hideLoader())
     if (apiResponse.data.success) {
-      toast.success('Report Uploaded successfully')
-      yield put(successFetchAllDocuments(apiResponse.data.documents))
+      toast.success(apiResponse.data.message)
     }
   } catch (e) {
     console.log(e)
+    yield put(hideLoader())
+    toast.error('Something went wrong')
   }
 }
 
 function* fecthDashboardSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchDashboardData, token, action.payload);
     if (apiResponse.data.success) {
-      console.log(apiResponse.data)
-      yield put(successFetchDashboard(apiResponse.data.dashboard))
+      yield put(successFetchDashboard(apiResponse.data))
     }
   } catch (e) {
     console.log(e)
@@ -149,7 +163,7 @@ function* fecthDashboardSaga(action){
 
 function* fetchProfileSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchProfileData, token, action.payload);
     if (apiResponse.data.success) {
       yield put(successFetchProfile(apiResponse.data.profile))

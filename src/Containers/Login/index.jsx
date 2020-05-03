@@ -27,7 +27,7 @@ class Login extends Component {
     }
 
     static getDerivedStateFromProps(newProps, State) {
-        if (localStorage.getItem('access_token')) {
+        if (sessionStorage.getItem('access_token')) {
             newProps.history.push('/app/layout/upload')
         }
         return State
@@ -51,7 +51,7 @@ class Login extends Component {
                         <input type='password' placeholder='Password' onChange={(event) => { this.handleFieldChange('password', event) }} />
                     </div>
                     <div className='signin_submit'>
-                        <input type='submit' onClick={this.onSubmit} />
+                        <input type='submit' onClick={this.onSubmit} value="SIGN IN"/>
                     </div>
                     <div>
                         <p className='sign_up'>Don't have an account? <span className='clickable-item' onClick={this.handleSignupClicked}>Sign up</span></p>

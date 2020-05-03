@@ -1,5 +1,4 @@
 .background{
-    background: #3A3A40;
 .upload_files_head{
     background: #e3e3e3;
     color: rgb(0, 0, 0);
@@ -8,55 +7,32 @@
     display: flex;
     font-size: 12px;
     font-weight: 100px bold;
-    //margin: 50px 0;
     justify-content: space-between;
     border-bottom:2px solid #cfc7dd;    
     .upload_doc{
-        //color: #c5bfbf;
         padding-left: 20px;
-        //font-size: 12px;
-        //font-weight: 100px;
-            }
+    }
     .upload_time{
-        //color: #c5bfbf;
         padding-right: 20px; 
-        //font-size: 12px;
-        //font-weight: 100px;
-            }
+    }
     
 }
+}
 .uploaded_files{
-    background: #e3e3e3;
-    //margin-top: 70px;
-    padding: 10px;
-    display: flex;
-    //margin: 50px 0;
-    border-bottom:2px solid #c5bfbf;
     .extension{
         background: #b1abab;
-        height: 35px;
-        padding-top: 15px;
-        padding-left: 5px;
-        padding-right: 5px;
-        margin-left: 15px;
-        flex:0;
-            }
+        float: left;
+        padding: 10px;
+    }
     .uploaded_doc{
         text-align: left;
         margin-left: 10px;
-        padding-top: 18px;
         font-size: 15px;
-        font-weight: 100px;
-        flex: 0.1;
-            }
+        font-weight: 100;
+    }
     .uploaded_time{
-        //padding-right: 30px;
-        text-align: right; 
         font-size: 15px;
-        font-weight: 100px;
-        flex: 0.87;
+        font-weight: 100;
         padding-top: 18px;
-
-            }
     }
 }

@@ -7,6 +7,7 @@ import adminDocumentReducer from './adminDocumentReducer';
 import adminCurrentDocument from './adminCurrentDocument';
 import dashboardReducer from './dashboardReducer';
 import profileReducer from './profileReducer';
+import loaderReducer from './loaderReducer';
 
 const appReducer = combineReducers({
   user: authReducer,
@@ -15,7 +16,8 @@ const appReducer = combineReducers({
   adminDocuments: adminDocumentReducer,
   adminCurrentDocument: adminCurrentDocument,
   dashboardData: dashboardReducer,
-  profileData: profileReducer
+  profileData: profileReducer,
+  loader : loaderReducer
 });
 
 const rootReducer = (state, action) => {

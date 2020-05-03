@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { requestUserAuthentication, requestUserRegistration } from '../../Actions/authenticationActions';
+import { requestUserRegistration } from '../../Actions/authenticationActions';
 import './style.scss';
 
 class Register extends Component {

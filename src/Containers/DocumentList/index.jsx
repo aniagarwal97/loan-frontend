@@ -14,22 +14,33 @@ class DocumentList extends Component {
     handleDocumentSelect = (guid) => {
         this.props.setParsingDocument(guid);
         this.props.history.push('/app/layout/dashboard-upload')
-        localStorage.setItem('adminCurrentDocument', guid)
+        sessionStorage.setItem('adminCurrentDocument', guid)
     }
     render() {
         return (
             <div className='background'>
-                <div className='upload_files_head'>
-                    <div className='upload_doc'>UPLOADED DOCUMENTS</div>
-                    <div className='upload_time'>CREATION DATE</div>
-                </div>
-                {this.props.documents && this.props.documents.length && this.props.documents.map((value, index) => {
-                    return (<div className='uploaded_files' key={index} onClick={()=>{this.handleDocumentSelect(value.guid)}}>
-                            <div className='extension'>{value.document_name.split(".")[value.document_name.split(".").length - 1]}</div>
-                            <div className='uploaded_doc'>{value.document_name}</div>
-                            <div className='uploaded_time'>{value.created_at.split(" ")[0]}</div>
-                </div>)
-                })}
+                <table >
+                    <thead>
+                        <tr >
+                            <th>UPLOADED DOCUMENTS</th>
+                            <th>CREATION DATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.props.documents && this.props.documents.length && this.props.documents.map((value, index) => {
+                                return (
+                                    <tr className='uploaded_files clickable-item' key={index} onClick={() => this.handleDocumentSelect(value.guid)}>
+                                        <td><span className='extension'>{value.document_name.split(".")[value.document_name.split(".").length - 1]}</span><div style={{marginTop: 11}}>{value.document_name}</div></td>
+                                        <td>{value.created_at.split(" ")[0]}</td>
+                                    </tr>
+                                )
+                            })
+                            ||
+                            <tr><td>There are no pending documents requiring approval</td></tr>
+                        }
+                    </tbody>
+                </table>
             </div>
             
         )
