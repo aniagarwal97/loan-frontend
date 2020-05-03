@@ -123,15 +123,15 @@ const Logo = () => (
 class Header extends Component {
     
     handleLogout = () => {
-        localStorage.removeItem('access_token')
-        localStorage.removeItem('adminCurrentDocument')
-        localStorage.removeItem('selected_dashboard_document')
-        localStorage.removeItem('is_admin')
+        sessionStorage.removeItem('access_token')
+        sessionStorage.removeItem('adminCurrentDocument')
+        sessionStorage.removeItem('selected_dashboard_document')
+        sessionStorage.removeItem('is_admin')
         this.props.history.push('/app/login')
     }
    
     render() {
-        const isUserAdmin = localStorage.getItem('is_admin')
+        const isUserAdmin = sessionStorage.getItem('is_admin')
         return (
             <div className='header'>
                 <div className='logo clickable-item' onClick={()=>{this.props.history.push('/app/layout/upload')}}>
