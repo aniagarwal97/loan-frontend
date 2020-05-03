@@ -910,6 +910,41 @@
     ===========================*/
 
     $(window).load(function () {
+        // First Solution
+        // var t = 0;
+        // function moveit() {t += 0.05;
+
+        // var r = 100;         // radius
+        // var xcenter = window.innerWidth/2 - 300;   // center X position
+        // var ycenter = window.innerHeight/2 - 220;   // center Y position
+
+        // var newLeft = Math.floor(xcenter + (r * Math.cos(t)));
+        // var newTop = Math.floor(ycenter + (r * Math.sin(t)));
+
+        // $('.preloader-image').animate({
+        //     top: newTop,
+        //     left: newLeft,
+        // }, 1, function () {
+        //     moveit();
+        // });}
+        // moveit();
+
+        // Second Solution
+        function AnimateRotate(d) {
+            var elem = $(".preloader-without-caption");
+
+            $({ deg: 0 }).animate({ deg: d }, {
+                duration: 300,
+                step: function (now) {
+                    elem.css({
+                        transform: "rotate(" + now + "deg)"
+                    });
+                }
+            });
+        }
+        setInterval(() => {
+           AnimateRotate(-360)
+        }, 299);
         setTimeout(function () {
             $('body').addClass('loaded');
         }, 200);
@@ -1272,5 +1307,11 @@
     ====================================*/
         document.className  = "darkBg";
         $('.christmas-snow').snowfall({image :"img/flake.png", minSize: 10, maxSize:32});
+
+    
+    // =====================================
+    //     51. Preloader
+    // =====================================
+
 
 })(jQuery);
