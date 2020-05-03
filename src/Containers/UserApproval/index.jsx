@@ -17,6 +17,11 @@ class UserApproval extends Component {
     handleRejectUser = (user_id) => {
         this.props.rejectUser({user_id : user_id})
     }
+
+    handleDeleteUser = (user_id) => {
+        this.props.deleteUser({user_id : user_id})
+    }
+
     render() {
         return (
             <div className="user_approval_page">
@@ -28,6 +33,7 @@ class UserApproval extends Component {
                         <th>Email</th>
                         <th>Organization</th>
                         <th>Action</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,7 +46,9 @@ class UserApproval extends Component {
                                         <td>{value.email}</td>
                                         <td>{value.org}</td>
                                         <td className='clickable-item'><span className="accept" onClick = {() => {this.handleAcceptUser(value.guid)}}>Accept</span> / <span onClick = {() => {this.handleRejectUser(value.guid)}} className="reject">Reject</span></td>
-                                    </tr>)
+                                        <td className='clickable-item'><span onClick = {() => {this.handleRejectUser(value.guid)}} className="delete"><span class="fa fa-trash-o"></span></span></td>
+                                    </tr>
+                                    )
                             })
                         }
                     </tbody>
