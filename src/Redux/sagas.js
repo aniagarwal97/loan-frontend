@@ -17,8 +17,8 @@ function* loginSaga(action) {
   try {
     const apiResponse = yield call(login, action.payload);
     if (apiResponse.data.success) {
-      apiResponse.data.is_Admin && localStorage.setItem('is_admin', apiResponse.data.is_Admin)
-      apiResponse.data.access_token && localStorage.setItem('access_token', apiResponse.data.access_token)
+      apiResponse.data.is_Admin && sessionStorage.setItem('is_admin', apiResponse.data.is_Admin)
+      apiResponse.data.access_token && sessionStorage.setItem('access_token', apiResponse.data.access_token)
       yield put(successUserAuthentication(apiResponse.data));
       toast.success('Howdy! Welcome Back')
     }
@@ -45,7 +45,7 @@ function* registrationSaga(action){
 
 function* fetchDocumentsSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchDocumentApi, token);
     if (apiResponse.data.success) {
       yield put(successFetchDocuments(apiResponse.data))
@@ -57,7 +57,7 @@ function* fetchDocumentsSaga(action){
 
 function* uploadDocumentSaga(action) {
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     yield put(showLoader())
     const apiResponse = yield call(uploadDocumentApi, token, action.payload);
     yield put(hideLoader())
@@ -77,7 +77,7 @@ function* uploadDocumentSaga(action) {
 
 function* fetchInactiveUsersSaga(){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchInactiveUsersAPI, token);
     if (apiResponse.data.success) {
       yield put(successFetchInactiveUsers(apiResponse.data.users))
@@ -89,7 +89,7 @@ function* fetchInactiveUsersSaga(){
 
 function* approveUserSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(approveUserApi, token, action.payload);
     if (apiResponse.data.success) {
       toast.success(apiResponse.data.message)
@@ -105,7 +105,7 @@ function* approveUserSaga(action){
 
 function* rejectUserSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(rejectUserApi, token, action.payload);
     if (apiResponse.data.success) {
       toast.success(apiResponse.data.message)
@@ -121,7 +121,7 @@ function* rejectUserSaga(action){
 
 function* fetchAllDocumentsSaga(){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchAllDocumentsApi, token);
     if (apiResponse.data.success) {
       yield put(successFetchAllDocuments(apiResponse.data.documents))
@@ -133,8 +133,8 @@ function* fetchAllDocumentsSaga(){
 
 function* uploadAnalysisSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
-    var document_id = localStorage.getItem('adminCurrentDocument')
+    var token = sessionStorage.getItem('access_token')
+    var document_id = sessionStorage.getItem('adminCurrentDocument')
     var finalPayload = Object.assign(action.payload, {document_id : document_id})
     yield put(showLoader())
     const apiResponse = yield call(uploadAnalysisReport, token, finalPayload);
@@ -151,7 +151,7 @@ function* uploadAnalysisSaga(action){
 
 function* fecthDashboardSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchDashboardData, token, action.payload);
     if (apiResponse.data.success) {
       yield put(successFetchDashboard(apiResponse.data))
@@ -163,7 +163,7 @@ function* fecthDashboardSaga(action){
 
 function* fetchProfileSaga(action){
   try {
-    var token = localStorage.getItem('access_token')
+    var token = sessionStorage.getItem('access_token')
     const apiResponse = yield call(fetchProfileData, token, action.payload);
     if (apiResponse.data.success) {
       yield put(successFetchProfile(apiResponse.data.profile))

@@ -25,11 +25,11 @@ class Dashboard extends Component {
         this.setState({
             currentTab: tab.key
         })
-        this.props.fecthDashboard({ document_id: localStorage.getItem('selected_dashboard_document'), search_keyword: tab.keyword })
+        this.props.fecthDashboard({ document_id: sessionStorage.getItem('selected_dashboard_document'), search_keyword: tab.keyword })
     }
 
     handleTableRowClick = (guid) => {
-        localStorage.setItem('selected_user', guid)
+        sessionStorage.setItem('selected_user', guid)
         this.props.history.push('/app/layout/profile')
     }
 
@@ -55,14 +55,14 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.props.fecthDashboard({ document_id: localStorage.getItem('selected_dashboard_document') })
+        this.props.fecthDashboard({ document_id: sessionStorage.getItem('selected_dashboard_document') })
     }
 
     searchDashboard = (event) => {
         this.emitChangeDebounced(event.target.value)
     }
     emitChange = value => {
-        this.props.fecthDashboard({ document_id: localStorage.getItem('selected_dashboard_document'), search_keyword: value })
+        this.props.fecthDashboard({ document_id: sessionStorage.getItem('selected_dashboard_document'), search_keyword: value })
     };
 
     handleChange = event => {
@@ -161,7 +161,7 @@ class Dashboard extends Component {
             { title: "Retail Loans", key: 3, value: secured_retail + unsecured_retail || 0, class: "", keyword: "Retail" },
             { title: "Corporate Loans", key: 4, value: secured_corporate + unsecured_corporate || 0, class: "", keyword: "Corporate" },
             { title: "Good Loans", key: 5, value: good_loan || 0, class: "green-loan", keyword: "good_loan" },
-            { title: "At risk Loans", key: 6, value: bad_loan || 0, class: "red-loan", keyword: "bad_loan" }
+            { title: "At Risk Loans", key: 6, value: bad_loan || 0, class: "red-loan", keyword: "bad_loan" }
         ];
 
         return (
@@ -188,7 +188,7 @@ class Dashboard extends Component {
                     <table className='table clickable-item' style={{ boxShadow: '6px 6px 6px grey' }}>
                         <thead>
                             <tr style={{ borderBottom: '1px solid #cec9c9' }}>
-                    <th onClick={() => {this.handleSort('ndg', false)}}>NDG {this.state.currentSort === 'ndg' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
+                    <th onClick={() => {this.handleSort('ndg', true)}}>NDG {this.state.currentSort === 'ndg' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
                                 <th onClick={() => {this.handleSort('gbv', true)}}>GBV {this.state.currentSort === 'gbv' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
                                 <th onClick={() => {this.handleSort('type_of_customer', false)}}>TIPO PRESTITO {this.state.currentSort === 'type_of_customer' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>
                                 <th onClick={() => {this.handleSort('garanzia', false)}}>GARANZIA {this.state.currentSort === 'garanzia' && <span className={this.state.sortOrder === 'asc' ? ('fa fa-arrow-down'): ('fa fa-arrow-up') }></span>}</th>

@@ -13,7 +13,7 @@ class UserProfile extends Component {
     }
 
     componentDidMount(){
-        this.props.fetchProfile({document_id : localStorage.getItem('selected_dashboard_document'), profile_id : localStorage.getItem('selected_user')})
+        this.props.fetchProfile({document_id : sessionStorage.getItem('selected_dashboard_document'), profile_id : sessionStorage.getItem('selected_user')})
     }
     render() {
         var chartData = this.props.profileData && this.props.profileData.length && this.props.profileData[0];

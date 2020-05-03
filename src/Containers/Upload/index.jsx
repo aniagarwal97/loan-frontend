@@ -18,7 +18,7 @@ class Upload extends Component {
     handleDocumentClick = (guid, is_Analysed) => {
         if(is_Analysed){
             this.props.history.push('/app/layout/dashboard')
-            localStorage.setItem('selected_dashboard_document', guid)
+            sessionStorage.setItem('selected_dashboard_document', guid)
         }
     }
 

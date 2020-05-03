@@ -27,7 +27,7 @@ class Login extends Component {
     }
 
     static getDerivedStateFromProps(newProps, State) {
-        if (localStorage.getItem('access_token')) {
+        if (sessionStorage.getItem('access_token')) {
             newProps.history.push('/app/layout/upload')
         }
         return State
